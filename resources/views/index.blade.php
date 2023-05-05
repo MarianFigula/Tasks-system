@@ -8,6 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-AHOJ
+TUTO ZMENU SPRAVIL MARIAN K.
 </body>
 </html>
