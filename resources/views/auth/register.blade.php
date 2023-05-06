@@ -38,6 +38,14 @@
                                 @enderror
                             </div>
                         </div>
+                        {{--oznacenie role ucitela alebo studenta--}}
+                        <div class="row mb-3">
+                            <label for="teacher" class="col-md-4 col-form-label text-md-end">I am teacher</label>
+
+                            <div class="col-md-6">
+                                <input id="teacher" type="checkbox" name="teacher">
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
