@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('student_tasks', function (Blueprint $table) {
-            $table->id();
             $table->integer('task_num');
+            $table->integer('file_id');
+            $table->integer('student_id');
             $table->foreign('student_id')
                 ->references('id')->on('users')->onDelete('cascade');
             $table->foreign('file_id')
