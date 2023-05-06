@@ -28,11 +28,18 @@
             <th>Meno</th>
             <th>Počet generovaných úloh</th>
             <th>Počet odovzdaných úloh</th>
-            <th>Počet získaných bodov</th>
         </tr>
         </thead>
         <tbody>
-            {{$x}}
+        @foreach($x as $item)
+            <tr>
+                <td>{{$item->id}}</td>
+                <td>{{$item->name}}</td>
+                <td>{{$item->email}}</td>
+                <td>{{$item->role}}</td>
+            </tr>
+
+        @endforeach
         </tbody>
     </table>
 </div>
