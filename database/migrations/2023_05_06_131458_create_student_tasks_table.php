@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('student_tasks', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('file_id')->unsigned();
             $table->integer('student_id')->unsigned();
             $table->foreign('student_id')
@@ -22,7 +23,6 @@ return new class extends Migration
             $table->boolean('task_gen')->default(false);
             $table->boolean('task_sub')->default(false);
             $table->boolean('task_correct')->default(false);
-
         });
     }
 
@@ -34,3 +34,5 @@ return new class extends Migration
         Schema::dropIfExists('student_tasks');
     }
 };
+
+
