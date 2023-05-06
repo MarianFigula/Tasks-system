@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('student_tasks', function (Blueprint $table) {
-            $table->integer('task_num');
-            $table->integer('file_id');
-            $table->integer('student_id');
+            $table->integer('file_id')->unsigned();
+            $table->integer('student_id')->unsigned();
             $table->foreign('student_id')
                 ->references('id')->on('users')->onDelete('cascade');
             $table->foreign('file_id')
                 ->references('id')->on('files')->onDelete('cascade');
+            $table->integer('task_num');
             $table->boolean('task_gen')->default(false);
             $table->boolean('task_sub')->default(false);
             $table->boolean('task_correct')->default(false);

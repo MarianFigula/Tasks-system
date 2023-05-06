@@ -13,7 +13,7 @@ return new class extends Migration
     {
 
         Schema::create('files', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('path');
             $table->date('date')->nullable();
             $table->integer('points');
