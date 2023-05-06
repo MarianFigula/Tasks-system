@@ -9,6 +9,8 @@ class Student_task extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'task_num',
         'task_gen',
