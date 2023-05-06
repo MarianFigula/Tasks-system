@@ -40,7 +40,6 @@
                         </div>
                         {{--oznacenie role ucitela alebo studenta--}}
                         <div class="row mb-3">
-
                             <input type="radio" name="role" value="teacher">
                             <label class="col-md-4 col-form-label text-md-end" for="flexRadioDefault1">
                                 Teacher
@@ -51,12 +50,6 @@
                                 Student
                             </label>
 
-{{--                            <div class="col-md-6">--}}
-{{--                                <label for="pohlavieM" class="radiocheck">Teacher</label>--}}
-{{--                                <input type="radio" name="role" value="teacher">--}}
-{{--                                <label for="pohlavieZ" class="radiocheck">Student</label>--}}
-{{--                                <input type="radio" name="role" value="student">--}}
-{{--                            </div>--}}
                         </div>
 
                         <div class="row mb-3">
