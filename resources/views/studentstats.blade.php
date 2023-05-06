@@ -32,7 +32,7 @@
         </tr>
         </thead>
         <tbody>
-
+            {{$x}}
         </tbody>
     </table>
 </div>
