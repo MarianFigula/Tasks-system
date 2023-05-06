@@ -38,13 +38,19 @@
                                 @enderror
                             </div>
                         </div>
-                        {{--oznacenie role ucitela alebo studenta--}}
+                        {{--TODO: oznacenie role ucitela alebo studenta, spravit styly--}}
                         <div class="row mb-3">
-                            <label for="teacher" class="col-md-4 col-form-label text-md-end">I am teacher</label>
 
-                            <div class="col-md-6">
-                                <input id="teacher" type="checkbox" name="teacher">
-                            </div>
+                            <input type="radio" name="role" value="teacher">
+                            <label class="col-md-4 col-form-label text-md-end" for="flexRadioDefault1">
+                                Teacher
+                            </label>
+
+                            <input type="radio" name="role"  checked value="student">
+                            <label class="col-md-4 col-form-label text-md-end" for="flexRadioDefault2">
+                                Student
+                            </label>
+
                         </div>
 
                         <div class="row mb-3">
