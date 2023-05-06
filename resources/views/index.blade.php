@@ -1,12 +1,25 @@
 <?php
 
-try {
-    $db = new PDO("mysql:host=147.175.98.87;dbname=jedalne", "xfigula", "OQubEFtap1wQECc");
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+namespace App\Http\Controllers;
 
-} catch (PDOException $e) {
-    echo $e->getMessage();
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
+
+class UserController extends Controller
+{
+    /**
+     * Show a list of all of the application's users.
+     */
+    public function index(): View
+    {
+        $users = DB::select('select * from users', [1]);
+
+        return $users;
+        //return view('user.index', ['users' => $users]);
+    }
 }
+
 ?>
 
 

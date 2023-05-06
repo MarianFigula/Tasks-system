@@ -40,11 +40,23 @@
                         </div>
                         {{--oznacenie role ucitela alebo studenta--}}
                         <div class="row mb-3">
-                            <label for="teacher" class="col-md-4 col-form-label text-md-end">I am teacher</label>
 
-                            <div class="col-md-6">
-                                <input id="teacher" type="checkbox" name="teacher">
-                            </div>
+                            <input type="radio" name="role" value="teacher">
+                            <label class="col-md-4 col-form-label text-md-end" for="flexRadioDefault1">
+                                Teacher
+                            </label>
+
+                            <input type="radio" name="role"  checked value="student">
+                            <label class="col-md-4 col-form-label text-md-end" for="flexRadioDefault2">
+                                Student
+                            </label>
+
+{{--                            <div class="col-md-6">--}}
+{{--                                <label for="pohlavieM" class="radiocheck">Teacher</label>--}}
+{{--                                <input type="radio" name="role" value="teacher">--}}
+{{--                                <label for="pohlavieZ" class="radiocheck">Student</label>--}}
+{{--                                <input type="radio" name="role" value="student">--}}
+{{--                            </div>--}}
                         </div>
 
                         <div class="row mb-3">
