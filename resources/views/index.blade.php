@@ -1,3 +1,15 @@
+<?php
+
+try {
+    $db = new PDO("mysql:host=147.175.98.87;dbname=jedalne", "xfigula", "OQubEFtap1wQECc");
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
