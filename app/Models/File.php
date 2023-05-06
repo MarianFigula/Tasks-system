@@ -9,6 +9,8 @@ class File extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'path',
         'date',
