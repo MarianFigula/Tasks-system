@@ -21,7 +21,7 @@
         <h3><b>Štatistiky študentov</b></h3>
     </div>
 
-    <table id="times" class="table table-striped table-bordered table-hover border-dark text-center">
+    <table id="stats" class="table table-striped table-bordered table-hover border-dark text-center">
         <thead class="bg-dark text-white">
         <tr class="text-center">
             <th>ID</th>
@@ -61,7 +61,7 @@
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('#logins').DataTable({
+        $('#stats').DataTable({
             rowReorder: true,
             responsive: true,
             columnDefs: [

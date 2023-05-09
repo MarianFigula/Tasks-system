@@ -16,14 +16,10 @@ class StudentDetailsController extends Controller
 
     public function getId($id)
     {
-        $x = \App\Models\User::find($id);
-        var_dump($x);
 
-        $query = DB::select('select st.file_id, st.task_num, st.task_sub, st.task_sub, st.student_answer, st.task_correct, f.points from student_tasks st JOIN files f ON f.id = st.file_id WHERE st.student_id = ?', [$id]);
+        $query = DB::select('select st.file_id, st.task_num, st.task_sub, /*st.student_answer,*/ st.task_correct, f.points from student_tasks st JOIN files f ON f.id = st.file_id WHERE st.student_id = ?', [$id]);
 
-        var_dump($query);
-
-        return view('studentdetails')->with($query);
+        return view('studentdetails')->with('query',$query);
 
     }
 
