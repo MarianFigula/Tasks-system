@@ -21,18 +21,30 @@
         <h3><b>Štatistiky študentov</b></h3>
     </div>
 
+
     <table id="times" class="table table-striped table-bordered table-hover border-dark text-center">
         <thead class="bg-dark text-white">
         <tr class="text-center">
             <th>ID</th>
             <th>Meno</th>
+            <th>Email</th>
             <th>Počet generovaných úloh</th>
             <th>Počet odovzdaných úloh</th>
             <th>Počet získaných bodov</th>
         </tr>
         </thead>
         <tbody>
-            {{$x}}
+        @foreach($x as $item)
+            <tr>
+                <td>{{$item->id}}</td>
+                <td>{{$item->name}}</td>
+                <td>{{$item->email}}</td>
+                <td>{{$item->GEN}}</td>
+                <td>{{$item->SUB}}</td>
+                <td>{{$item->POINTS}}</td>
+            </tr>
+
+        @endforeach
         </tbody>
     </table>
 </div>

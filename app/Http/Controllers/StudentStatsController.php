@@ -14,10 +14,8 @@ class StudentStatsController extends Controller
 
     public function index()
     {
-        $dd = ['student'];
-        $x = DB::select('select * from users WHERE users.role LIKE ?',['student']);
+        $x = DB::select('select u.id, u.name, u.email, SUM(st.task_gen) as GEN, SUM(st.task_sub) as SUB, SUM(f.points) as POINTS from users u JOIN student_tasks st ON st.student_id = u.id JOIN files f ON f.id = st.file_id WHERE u.role LIKE ? GROUP BY u.id,f.id',['student']);
 
-        #DDPC
         var_dump($x);
         return view('studentstats')->with('x',$x);
     }
