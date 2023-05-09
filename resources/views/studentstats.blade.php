@@ -43,7 +43,7 @@
                 <td>{{$x[$i]->GEN}}</td>
                 <td>{{$x[$i]->SUB}}</td>
                 <td>{{$y[$i]->POINTS}}</td>
-                <td><a href="{{ url('/studentdetail/' . $x[$i]->id) }}" class="btn btn-xs btn-info pull-right">Detail</a></td>
+                <td><a href="{{ url('/studentdetails/' . $x[$i]->id) }}" class="btn btn-xs btn-info pull-right">Detail</a></td>
                 <td>BUTTON</td>
             </tr>
         @endfor

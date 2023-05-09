@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\User;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\DB;
 
 class StudentDetailsController extends Controller
@@ -12,16 +14,16 @@ class StudentDetailsController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function getId($id)
     {
-        $x = DB::select('select u.id, u.name, u.email, SUM(st.task_gen) as GEN, SUM(st.task_sub) as SUB from users u JOIN student_tasks st ON st.student_id = u.id WHERE u.role LIKE ? GROUP BY u.id',['student']);
+        $x = \App\Models\User::find($id);
+        var_dump($x);
 
-        $y = DB::select('select st.student_id, SUM(f.points) as POINTS from student_tasks st JOIN files f ON f.id = st.file_id GROUP BY st.student_id ORDER BY st.student_id ASC');
+        $query = DB::select('select st.file_id, st.task_num, st.task_sub, st.task_sub, st.student_answer, st.task_correct, f.points from student_tasks st JOIN files f ON f.id = st.file_id WHERE st.student_id = ?', [$id]);
 
+        var_dump($query);
 
-        $data = compact('x','y');
-
-        return view('studentstats')->with($data);
+        return view('studentdetails')->with($query);
 
     }
 

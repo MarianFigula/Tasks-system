@@ -8,6 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-
+{{var_dump($query)}}
 </body>
 </html>
