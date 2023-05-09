@@ -14,7 +14,7 @@ class StudentStatsController extends Controller
 
     public function index()
     {
-        $ddd = ['student'];
+        $dddd = ['student'];
         $x = DB::select('select * from users WHERE users.role LIKE ?',['student']);
 
         #DDPC
