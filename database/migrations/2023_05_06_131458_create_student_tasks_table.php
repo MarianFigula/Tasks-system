@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('task_gen')->default(false);
             $table->boolean('task_sub')->default(false);
             $table->boolean('task_correct')->default(false);
+            $table->string('student_answer')->default(null);
         });
     }
 

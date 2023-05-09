@@ -16,5 +16,6 @@ class Student_task extends Model
         'task_gen',
         'task_sub',
         'task_correct',
+        'student_answer'
     ];
 }
