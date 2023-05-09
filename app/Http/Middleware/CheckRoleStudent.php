@@ -18,14 +18,12 @@ class CheckRoleStudent
         $role = auth()->user()->role;
         var_dump($role);
 
-        if ($role == "student"){
-            var_dump("STUDENT");
-            return redirect()->route("about");
-        }else{
-            return redirect()->route("index");
+        if ($role != "student"){
+            //TODO do teacherovej hlavnej
+            return redirect()->route("");
         }
 
-        //echo "ide next request";
-        //return $next($request);
+        echo "ide next request";
+        return $next($request);
     }
 }

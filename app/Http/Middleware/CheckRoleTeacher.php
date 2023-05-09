@@ -16,17 +16,18 @@ class CheckRoleTeacher
     public function handle(Request $request, Closure $next): Response
     {
         $role = auth()->user()->role;
-        var_dump($role);
+        //var_dump($role);
 
-        if ($role == "teacher"){
-            var_dump("Teacher");
-            return redirect()->route("about");
-        }else{
-            return redirect()->route("index");
+        if ($role != "teacher"){
+            //var_dump("Teacher");
+            //TODO do studentovej hlavnej stranky
+            return redirect()->route("studentstats");
         }
 
-        //echo "ide next request";
-        //return $next($request);
+        echo "ide next request";
+        return $next($request);
     }
+
+
 
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CheckRoleTeacher;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +24,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/studentstats', [App\Http\Controllers\StudentStatsController::class, 'index'])->name('studentstats');
+Route::get('/studentstats', [App\Http\Controllers\StudentStatsController::class, 'index'])
+    ->middleware(CheckRoleTeacher::class)
+    ->name('studentstats');
