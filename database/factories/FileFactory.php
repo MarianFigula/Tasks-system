@@ -24,6 +24,7 @@ class FileFactory extends Factory
             'path' => $this->faker->filePath(),
             'date' => now(),
             'points' =>  $this->faker->randomDigit(),
+
         ];
     }
 
