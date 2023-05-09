@@ -8,3 +8,4 @@
   pre pokracovanie sa prihlaste/zaregistruje, + autori zadania - volna ruka pre dizajn
  
 
+
