@@ -22,8 +22,8 @@ class Student_taskFactory extends Factory
     public function definition(): array
     {
         return [
-            'student_id' => User::factory(),
-            'file_id' => File::factory(),
+            'student_id' => User::query()->where('role', 'student')->inRandomOrder()->first()->id,
+            'file_id' => File::query()->inRandomOrder()->first()->id,
             'task_num' => $this->faker->randomDigit(),
             'task_gen' => $this->faker->boolean,
             'task_sub' =>  $this->faker->boolean,
