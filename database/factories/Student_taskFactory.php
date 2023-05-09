@@ -28,6 +28,7 @@ class Student_taskFactory extends Factory
             'task_gen' => $this->faker->boolean,
             'task_sub' =>  $this->faker->boolean,
             'task_correct' =>  $this->faker->boolean,
+
         ];
     }
 }
