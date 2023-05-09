@@ -21,7 +21,6 @@
         <h3><b>Štatistiky študentov</b></h3>
     </div>
 
-
     <table id="times" class="table table-striped table-bordered table-hover border-dark text-center">
         <thead class="bg-dark text-white">
         <tr class="text-center">
@@ -31,23 +30,27 @@
             <th>Počet generovaných úloh</th>
             <th>Počet odovzdaných úloh</th>
             <th>Počet získaných bodov</th>
+            <th>Detail</th>
+            <th>Priradiť úlohy</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($x as $item)
+        @for($i = 0; $i < count($x); $i++)
             <tr>
-                <td>{{$item->id}}</td>
-                <td>{{$item->name}}</td>
-                <td>{{$item->email}}</td>
-                <td>{{$item->GEN}}</td>
-                <td>{{$item->SUB}}</td>
-                <td>{{$item->POINTS}}</td>
+                <td>{{$x[$i]->id}}</td>
+                <td>{{$x[$i]->name}}</td>
+                <td>{{$x[$i]->email}}</td>
+                <td>{{$x[$i]->GEN}}</td>
+                <td>{{$x[$i]->SUB}}</td>
+                <td>{{$y[$i]->POINTS}}</td>
+                <td>BUTTON</td>
+                <td>BUTTON</td>
             </tr>
-
-        @endforeach
+        @endfor
         </tbody>
     </table>
 </div>
+
 
 
 </body>
