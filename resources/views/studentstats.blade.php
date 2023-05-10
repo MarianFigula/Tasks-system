@@ -37,15 +37,3 @@
 </div>
 @endsection
 
-
-<!--
-    $(document).ready(function () {
-        $('#stats').DataTable({
-            rowReorder: true,
-            responsive: true,
-            columnDefs: [
-                {orderable: true, className: 'reorder', targets: 1},
-                {orderable: true, className: 'reorder', targets: 2},
-            ]
-        });
-    });-->
