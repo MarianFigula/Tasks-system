@@ -29,3 +29,6 @@ Route::get('/studentstats', [App\Http\Controllers\StudentStatsController::class,
 
 Route::get('/studentdetails/{id}', [App\Http\Controllers\StudentDetailsController::class, 'getId'])->name('studentdetails');
 Route::get('/assigntasks/{id}', [App\Http\Controllers\AssignTasksController::class, 'assign'])->name('assigntasks');
+//Route::post('/assigntasks', [App\Http\Controllers\AssignTasksController::class, 'insert']);
+Route::get('/editfiles/{fileid}/{studentid}', [App\Http\Controllers\EditFilesController::class, 'getId'])->name('editfiles1');
+Route::post('/editfiles', [App\Http\Controllers\EditFilesController::class, 'edit'])->name('editfiles2');

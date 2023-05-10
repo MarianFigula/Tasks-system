@@ -2,7 +2,6 @@
 
 
 @section('content')
-    {{var_dump($id)}}
 
     <div class=" table-responsive col-xl-6">
         <div class="text-center">
@@ -18,6 +17,7 @@
                     <th>Body</th>
                     <th>Obmedzenie</th>
                     <th>Pridaj</th>
+                    <th>Uprav</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,6 +28,7 @@
                         <td>{{$item->points}}</td>
                         <td>{{$item->date}}</td>
                         <td> <form action="{{url('assigntasks')}}" method="post"><input type="hidden" name="task_id" value="{{$item->id}}"><button type="submit" class="btn btn-success">Pridaj</button></form></td>
+                        <td><a href="{{ url('editfiles/' . $item->id . '/' . $id) }}" class="btn btn-xs btn-success pull-right">Uprav</a></td>
                     </tr>
                 @endforeach
                 </tbody>

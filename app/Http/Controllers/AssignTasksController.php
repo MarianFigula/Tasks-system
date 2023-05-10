@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use JetBrains\PhpStorm\NoReturn;
 
 class AssignTasksController extends Controller
 {
@@ -20,20 +21,12 @@ class AssignTasksController extends Controller
         $data = compact('id','query');
 
         return view('assigntasks')->with($data);
+    }
+
+    public function insert(){
+
 
     }
 
-    public function insert( Request $request){
-
-
-        //$query = DB::insert('insert into student_tasks st values ()');
-
-        //$data = compact('id','query');
-
-        var_dump(dd($request->all()));
-
-        return view('index');
-
-    }
 
 }
