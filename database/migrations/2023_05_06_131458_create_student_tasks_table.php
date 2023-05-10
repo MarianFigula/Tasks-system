@@ -19,11 +19,11 @@ return new class extends Migration
                 ->references('id')->on('users')->onDelete('cascade');
             $table->foreign('file_id')
                 ->references('id')->on('files')->onDelete('cascade');
-            $table->integer('task_num');
+            $table->integer('task_num')->default(null)->nullable(true);
             $table->boolean('task_gen')->default(false);
             $table->boolean('task_sub')->default(false);
             $table->boolean('task_correct')->default(false);
-            $table->string('student_answer')->default(null);
+            $table->string('student_answer')->default(null)->nullable(true);
         });
     }
 

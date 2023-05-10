@@ -27,7 +27,10 @@
                         <td>{{$item->path}}</td>
                         <td>{{$item->points}}</td>
                         <td>{{$item->date}}</td>
-                        <td> <form action="{{url('assigntasks')}}" method="post"><input type="hidden" name="task_id" value="{{$item->id}}"><button type="submit" class="btn btn-success">Pridaj</button></form></td>
+                        <td> <form action="{{url('assigntasks')}}" method="post">
+                                <input type="hidden" name="file_id" value="{{$item->id}}">
+                                <input type="hidden" name="student_id" value="{{$id}}">
+                                <button type="submit" class="btn btn-success">Pridaj</button></form></td>
                         <td><a href="{{ url('editfiles/' . $item->id . '/' . $id) }}" class="btn btn-xs btn-success pull-right">Uprav</a></td>
                     </tr>
                 @endforeach
