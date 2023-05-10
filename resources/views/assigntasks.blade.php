@@ -16,6 +16,7 @@
                 <th>Cesta</th>
                 <th>Body</th>
                 <th>Obmedzenie</th>
+                <th>Výber</th>
             </tr>
             </thead>
             <tbody>
@@ -25,12 +26,13 @@
                     <td>{{$item->path}}</td>
                     <td><input type="number" value="{{$item->points}}"></td>
                     <td><input type="date" value="{{$item->date}}"></td>
+                    <td><input type="checkbox"></td>
                 </tr>
             @endforeach
             </tbody>
         </table>
     </div>
 
-    <button type="button">pridaj</button>
+    <button type="button" class="btn btn-success">pridaj</button>
 
 @endsection
