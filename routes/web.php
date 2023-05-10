@@ -28,3 +28,4 @@ Route::get('/studentstats', [App\Http\Controllers\StudentStatsController::class,
     ->name('studentstats');
 
 Route::get('/studentdetails/{id}', [App\Http\Controllers\StudentDetailsController::class, 'getId'])->name('studentdetails');
+Route::get('/assigntasks/{id}', [App\Http\Controllers\AssignTasksController::class, 'assign'])->name('assigntasks');

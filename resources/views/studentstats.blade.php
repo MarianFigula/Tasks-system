@@ -29,7 +29,7 @@
                 <td>{{$x[$i]->SUB}}</td>
                 <td>{{$y[$i]->POINTS}}</td>
                 <td><a href="{{ url('/studentdetails/' . $x[$i]->id) }}" class="btn btn-xs btn-info pull-right">Detail</a></td>
-                <td>BUTTON</td>
+                <td><a href="{{ url('/assigntasks/' . $x[$i]->id) }}" class="btn btn-xs btn-success pull-right">Priraď</a></td>
             </tr>
         @endfor
         </tbody>

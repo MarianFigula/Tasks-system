@@ -2,6 +2,7 @@
 
 
 @section('content')
+
 <div class=" table-responsive col-xl-6">
     <div class="text-center">
         <h3><b>Štatistiky študenta</b></h3>
