@@ -25,7 +25,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/studentstats', [App\Http\Controllers\StudentStatsController::class, 'index'])
-    ->middleware(CheckRoleTeacher::class)
     ->name('studentstats');
 
 Route::get('/studentdetails/{id}', [App\Http\Controllers\StudentDetailsController::class, 'getId'])->name('studentdetails');
