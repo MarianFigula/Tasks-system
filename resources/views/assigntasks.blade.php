@@ -9,7 +9,7 @@
             <h3><b>Štatistiky študentov</b></h3>
         </div>
 
-        <table id="stats" class="table table-striped table-bordered table-hover border-dark text-center">
+        <table id="table-assign" class="table table-striped table-bordered table-hover border-dark text-center">
             <thead class="bg-dark text-white">
             <tr class="text-center">
                 <th>ID</th>
