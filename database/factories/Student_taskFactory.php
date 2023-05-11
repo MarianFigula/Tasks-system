@@ -24,7 +24,7 @@ class Student_taskFactory extends Factory
         return [
             'student_id' => User::query()->where('role', 'student')->inRandomOrder()->first()->id,
             'file_id' => File::query()->inRandomOrder()->first()->id,
-            'task_num' => $this->faker->randomDigit(),
+            'task_num' => $this->faker->word(),
             'task_gen' => $this->faker->boolean,
             'task_sub' =>  $this->faker->boolean,
             'task_correct' =>  $this->faker->boolean,
