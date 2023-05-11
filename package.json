@@ -15,6 +15,7 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
-        "jquery": "^3.6.4"
+        "jquery": "^3.6.4",
+        "mathjax": "^3.2.2"
     }
 }
