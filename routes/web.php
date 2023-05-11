@@ -21,6 +21,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/teacherTutorial', [App\Http\Controllers\TeacherPdfController::class, 'index']);
+Route::get('/teacher-pdf', [App\Http\Controllers\TeacherPdfController::class, 'generatePdf'])->name('teacher-pdf');
+
+Route::get('/studentTutorial',[App\Http\Controllers\StudentPdfController::class, 'index']);
+Route::get('/student-pdf', [App\Http\Controllers\StudentPdfController::class, 'generatePdf'])->name('student-pdf');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
