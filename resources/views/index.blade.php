@@ -27,7 +27,6 @@ TUTO ZMENU SPRAVIL ANTRIK.
 </p>
 
 {{--$latex_code = file_get_contents('C:\Users\ajoaj\PhpstormProjects\webte2\zaverecneZadanieWebte\zadanie99\blokovka01pr.tex')--}}
-<img src="{{asset('zadanie99/images/blokovka02_00004.jpg')}}" alt="image">
 
 <div class="katex">
     {{-- TODO ULOZIT CISLO DO DB, COUNTER PRE POCET ULOH, RNG, --}}
@@ -45,7 +44,7 @@ TUTO ZMENU SPRAVIL ANTRIK.
         @elseif(\Illuminate\Support\Str::contains($line, "\includegraphics"))
             {{-- TODO CESTA IDE V STRINGU ALE NIE VEZ FUNCKIU - VARDUMP UKAZUJE MALO ZNAKOV ALE VYPISE SPRAVNE--}}
             <p>{{ \App\Http\Controllers\IndexController::getStringInCurlyBraces($line) }}</p>
-            <img src="{{asset("'". \App\Http\Controllers\IndexController::getStringInCurlyBraces($line))."'"}}" alt="image">
+            <img src="{{asset(\App\Http\Controllers\IndexController::getStringInCurlyBraces($line))}}" alt="image">
         @endif
 
 
