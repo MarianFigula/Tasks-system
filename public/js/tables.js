@@ -21,7 +21,11 @@ $(document).ready(function () {
         columnDefs: [
             {orderable: false, targets: [3,4,5,6,7] },
             {orderable: true, className: 'reorder', targets: [0,1,2]}
-        ]
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+            'csv','excel'
+        ],
     });
 });
 
