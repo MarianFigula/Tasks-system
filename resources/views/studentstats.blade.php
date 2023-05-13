@@ -5,7 +5,7 @@
     <div class="text-center">
         <h3><b>Štatistiky študentov</b></h3>
     </div>
-{{var_dump($y)}}
+
     <table id="stats" class="table table-striped table-bordered table-hover border-dark text-center">
         <thead class="bg-dark text-white">
         <tr class="text-center">
@@ -13,7 +13,6 @@
             <th>Meno</th>
             <th>Email</th>
             <th>Počet generovaných úloh</th>
-            <th>Počet odovzdaných úloh</th>
             <th>Počet získaných bodov</th>
             <th>Detail</th>
             <th>Priradiť úlohy</th>
@@ -27,11 +26,9 @@
                 <td>{{$x[$i]->email}}</td>
                 @if($x[$i]->GEN != null)
                     <td>{{$x[$i]->GEN}}</td>
-                @else
-                    <td>0</td>
-                @endif
-                @if($x[$i]->SUB != null)
-                    <td>{{$x[$i]->SUB}}</td>
+                    @if(count($y) == 0)
+                        <td>0</td>
+                    @endif
                     @for($j = 0; $j < count($y); $j++)
                         @if($x[$i]->id == $y[$j]->student_id)
                             @if($y[$j]->POINTS != null)
