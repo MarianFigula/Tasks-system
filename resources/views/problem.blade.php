@@ -10,33 +10,38 @@
         onload="renderMathInElement(document.body);"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js" integrity="sha512-VW8/i4IZkHxdD8OlqNdF7fGn3ba0+lYqag+Uy4cG6BtJ/LIr8t23s/vls70pQ41UasHH0tL57GQfKDApqc9izA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {{--$latex_code = file_get_contents('C:\Users\ajoaj\PhpstormProjects\webte2\zaverecneZadanieWebte\zadanie99\blokovka01pr.tex')--}}
+
+
 @section('content')
-<div class="katex">
+    <div class="katex">
     {{-- TODO ULOZIT CISLO DO DB, COUNTER PRE POCET ULOH, RNG, --}}
-
+        {{ $taskFound = false }}
     @foreach ($latexLines as $line)
-        {{-- // zobrazenie ideciek - na ulozenie do db podla random number gen//
-        @if(\Illuminate\Support\Str::contains($line, "\section*{"))
-            {{ $task_num = \App\Http\Controllers\IndexController::getTaskId($line) }}
+        {{-- // zobrazenie ideciek - na ulozenie do db podla random number gen//--}}
+        @if(\Illuminate\Support\Str::contains($line, $task_num))
+            {{ $taskFound = true }}
             <br>
-        @endif --}}
-        @if(\Illuminate\Support\Str::contains($line, "$"))
-            {!! $text =  \App\Http\Controllers\IndexController::displayEquation($line) !!}
-
-            @continue
-        @elseif(\Illuminate\Support\Str::contains($line, "\includegraphics"))
-            {{-- TODO CESTA IDE V STRINGU ALE NIE VEZ FUNCKIU - VARDUMP UKAZUJE MALO ZNAKOV ALE VYPISE SPRAVNE--}}
-            <p>{{ \App\Http\Controllers\IndexController::getStringInCurlyBraces($line) }}</p>
-            <img src="{{asset(\App\Http\Controllers\IndexController::getStringInCurlyBraces($line))}}" alt="image">
         @endif
+        @if($taskFound == true)
+            @if(\Illuminate\Support\Str::contains($line, "$"))
+                {{-- {!! $text =  \App\Http\Controllers\ProblemController::displayEquation($line) !!}
+
+                @continue--}}
+            @elseif(\Illuminate\Support\Str::contains($line, "\includegraphics"))
+                {{-- TODO CESTA IDE V STRINGU ALE NIE VEZ FUNCKIU - VARDUMP UKAZUJE MALO ZNAKOV ALE VYPISE SPRAVNE--}}
+                <p>{{ \App\Http\Controllers\ProblemController::getStringInCurlyBraces($line) }}</p>
+                <img src="{{asset(\App\Http\Controllers\ProblemController::getStringInCurlyBraces($line))}}" alt="image">
+                @endif
+            @endif
 
 
-        {{-- TODO: TU JE ZAZNAMENANA ODPOVED - ulozit do databazy --}}
+        {{-- TODO: TU JE ZAZNAMENANA ODPOVED - ulozit do databazy--}}
         @if(\Illuminate\Support\Str::contains($line, "\dfrac{"))
             {!! '\[' . $line . '\]' !!}
         @endif
-        {{--{!! '\[' . $line . '\]' !!} --}}
+        {{--{!! '\[' . $line . '\]' !!}--}}
     @endforeach
+
 </div>
 
 <form action="" method="post">

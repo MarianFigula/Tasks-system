@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/index', [\App\Http\Controllers\IndexController::class, 'index'])->name("latex-index");
+Route::get('/problem', [\App\Http\Controllers\ProblemController::class, 'getFilePath'])->name("problem");
 
 Route::get('/', function () {
     return view('welcome');

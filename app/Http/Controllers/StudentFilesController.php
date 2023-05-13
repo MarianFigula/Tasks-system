@@ -33,9 +33,9 @@ class StudentFilesController extends Controller
         DB::update('update student_tasks st SET st.task_gen=true where st.file_id='.$file_id.' and st.student_id='.$student_id);
         $path = DB::select('select f.path from files f where id='.$file_id);
 
-        $data = compact('student_id','file_id','path');
+        //$data = compact('student_id','file_id','path');
 
-        return view('index')->with($data);//latex
-
+        //return view('problem')->with($data);//latex
+        return ProblemController::getFilePath($student_id, $file_id, $path);
     }
 }
