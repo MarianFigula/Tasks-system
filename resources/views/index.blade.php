@@ -56,6 +56,10 @@ TUTO ZMENU SPRAVIL ANTRIK.
     @endforeach
 </div>
 
+<div>
+    <input type="text" class="p-3" placeholder="Answer">
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.js" integrity="sha384-9lsoyz3sJX5k8Ywd+yPitnjqFDfsgawBTWV5O/Vk+T5P/16g0op7bUEj4ikO8yl0" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css" integrity="sha384-9R0MLYyGQOEF0M0sZFK8M7EedNh1A4A/JseZTQNYXWdWUtmIh7Qc9mJX5WTG+9BZ" crossorigin="anonymous" />
 <script>
