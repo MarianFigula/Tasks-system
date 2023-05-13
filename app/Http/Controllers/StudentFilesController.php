@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
-class StudentAssignedFiles extends Controller
+class StudentFilesController extends Controller
 {
     public function __construct()
     {
@@ -31,7 +31,7 @@ class StudentAssignedFiles extends Controller
         $file_id = $request->file_id;
 
         DB::update('update student_tasks st SET st.task_gen=true where st.file_id='.$file_id.' and st.student_id='.$student_id);
-        $path = DB::select('select f.path from files where id='.$file_id);
+        $path = DB::select('select f.path from files f where id='.$file_id);
 
         $data = compact('student_id','file_id','path');
 
