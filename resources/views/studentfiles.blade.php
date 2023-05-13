@@ -12,10 +12,10 @@
             <thead class="bg-dark text-white">
             <tr class="text-center">
                 <th>ID</th>
-                <th>Cesta</th>
+                <th>Názov</th>
                 <th>Body</th>
                 <th>Obmedzenie</th>
-                <th>Generovať</th>
+                <th>Generovať príklad</th>
             </tr>
             </thead>
             <tbody>

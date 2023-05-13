@@ -38,8 +38,22 @@ $(document).ready(function () {
         lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"] ],
         columnDefs: [
 
-        {orderable: false, targets: [2, 3, 4] },
-        {orderable: true, className: 'reorder', targets: [0,1]}
+        {orderable: false, targets: [4] },
+        {orderable: true, className: 'reorder', targets: [0,1,2,3]}
         ]
+    });
+});
+
+
+$(document).ready(function () {
+    $('#assigned').DataTable({
+        rowReorder: true,
+        responsive: true,
+        paging: true,
+        lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"] ],
+        columnDefs: [
+            {orderable: false, targets: [1] },
+            {orderable: true, className: 'reorder', targets: [0,2]}
+        ],
     });
 });
