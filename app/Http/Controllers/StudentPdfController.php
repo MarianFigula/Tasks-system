@@ -12,6 +12,11 @@ class StudentPdfController extends Controller
         return view('studentTutorial');
     }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function generatePdf()
     {
         // Retrieve the HTML content of the specified element

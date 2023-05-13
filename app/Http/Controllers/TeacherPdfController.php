@@ -12,6 +12,11 @@ class TeacherPdfController extends Controller
         return view('teacherTutorial');
     }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     public function generatePdf()
     {

@@ -28,6 +28,10 @@ Route::get('/student-pdf', [App\Http\Controllers\StudentPdfController::class, 'g
 
 Auth::routes();
 
+Route::get('/studentfiles', [App\Http\Controllers\StudentAssignedFiles::class, 'index'])->name('studentfiles');
+Route::post('/studentfiles', [App\Http\Controllers\StudentAssignedFiles::class, 'update']);
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/studentstats', [App\Http\Controllers\StudentStatsController::class, 'index'])
     ->name('studentstats');
