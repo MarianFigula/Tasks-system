@@ -15,10 +15,12 @@ class AssignTasksController extends Controller
 
     public function assign($id)
     {
-        $query = DB::select('select * from files f');
+        $filesquery = DB::select('select f.id,f.path,f.date,f.points from files f');
         $studentquery = DB::select('select * from users u where u.id='.$id);
 
-        $data = compact('id','query','studentquery');
+        $studentfilesquery = DB::select('select f.id,f.path,f.date,f.points from student_tasks st join files f on f.id = st.file_id where st.student_id='.$id);
+
+        $data = compact('id','filesquery','studentquery','studentfilesquery');
 
         return view('assigntasks')->with($data);
         //return url('/assigntasks/' . $id);
