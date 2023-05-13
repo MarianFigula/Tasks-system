@@ -17,7 +17,7 @@ class StudentFilesController extends Controller
     public function index()
     {
         $student_id = auth()->user()->id;
-        $query = DB::select('select f.id,f.path,f.points,f.date from student_tasks st join files f on st.file_id = f.id where st.student_id='.$student_id.' and st.task_gen=false');
+        $query = DB::select('select f.id,f.path,f.points,f.date, st.task_gen, st.task_correct from student_tasks st join files f on st.file_id = f.id where st.student_id='.$student_id);
 
         $data = compact('query','student_id');
 

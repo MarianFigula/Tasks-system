@@ -5,7 +5,7 @@
     <div class="text-center">
         <h3><b>Štatistiky študentov</b></h3>
     </div>
-
+{{var_dump($y)}}
     <table id="stats" class="table table-striped table-bordered table-hover border-dark text-center">
         <thead class="bg-dark text-white">
         <tr class="text-center">
@@ -25,9 +25,26 @@
                 <td>{{$x[$i]->id}}</td>
                 <td>{{$x[$i]->name}}</td>
                 <td>{{$x[$i]->email}}</td>
-                <td>{{$x[$i]->GEN}}</td>
-                <td>{{$x[$i]->SUB}}</td>
-                <td>{{$y[$i]->POINTS}}</td>
+                @if($x[$i]->GEN != null)
+                    <td>{{$x[$i]->GEN}}</td>
+                @else
+                    <td>0</td>
+                @endif
+                @if($x[$i]->SUB != null)
+                    <td>{{$x[$i]->SUB}}</td>
+                    @for($j = 0; $j < count($y); $j++)
+                        @if($x[$i]->id == $y[$j]->student_id)
+                            @if($y[$j]->POINTS != null)
+                                <td>{{$y[$j]->POINTS}}</td>
+                            @else
+                                <td>0</td>
+                            @endif
+                        @endif
+                    @endfor
+                @else
+                    <td>0</td>
+                    <td>0</td>
+                @endif
                 <td><a href="{{ url('/studentdetails/' . $x[$i]->id) }}" class="btn btn-xs btn-info pull-right">Detail</a></td>
                 <td><a href="{{ url('/assigntasks/' . $x[$i]->id) }}" class="btn btn-xs btn-success pull-right">Priraď</a></td>
             </tr>

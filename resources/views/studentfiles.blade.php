@@ -15,7 +15,8 @@
                 <th>Názov</th>
                 <th>Body</th>
                 <th>Obmedzenie</th>
-                <th>Generovať príklad</th>
+                <th>Riešenie</th>
+                <th>Stav</th>
             </tr>
             </thead>
             <tbody>
@@ -25,10 +26,22 @@
                     <td>{{$item->path}}</td>
                     <td>{{$item->points}}</td>
                     <td>{{$item->date}}</td>
+                    @if($item->task_correct)
+                        <td>Správne</td>
+                    @elseif(!$item->task_correct && !$item->task_gen)
+                        <td>Neriešené</td>
+                    @else
+                        <td>Nesprávne</td>
+                    @endif
+                    @if(!$item->task_gen)
                     <td> <form action="{{url('studentfiles')}}" method="post">
                             <input type="hidden" name="file_id" value="{{$item->id}}">
                             <input type="hidden" name="student_id" value="{{$student_id}}">
-                            <button type="submit" class="btn btn-success">Generuj</button></form></td>
+                            <button type="submit" class="btn btn-success">Riešiť</button></form></td>
+                    @else
+                        <td>Odovzdané</td>
+                    @endif
+
                 </tr>
             @endforeach
             </tbody>
