@@ -16,7 +16,7 @@ class StudentStatsController extends Controller
     {
         $x = DB::select('select u.id, u.name, u.email, SUM(st.task_gen) as GEN, SUM(st.task_sub) as SUB from users u left JOIN student_tasks st ON st.student_id = u.id WHERE u.role LIKE ? GROUP BY u.id',['student']);
 
-        $y = DB::select('select st.student_id, SUM(f.points) as POINTS from student_tasks st JOIN files f ON f.id = st.file_id GROUP BY st.student_id ORDER BY st.student_id ASC');
+        $y = DB::select('select st.student_id, SUM(f.points) as POINTS from student_tasks st JOIN files f ON f.id = st.file_id WHERE st.task_correct = true GROUP BY st.student_id ORDER BY st.student_id ASC');
 
 
         $data = compact('x','y');
