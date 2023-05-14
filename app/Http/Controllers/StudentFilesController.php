@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 
 
 class StudentFilesController extends Controller
@@ -36,6 +36,10 @@ class StudentFilesController extends Controller
         //$data = compact('student_id','file_id','path');
 
         //return view('problem')->with($data);//latex
-        return ProblemController::getFilePath($student_id, $file_id, $path);
+        //return ProblemController::fetData($student_id, $file_id, $path);
+        session(['student_id' => $student_id, 'file_id' => $file_id, 'path' => $path]);
+
+        return redirect()->route('problem');
+
     }
 }

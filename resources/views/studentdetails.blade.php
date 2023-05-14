@@ -5,7 +5,7 @@
 
 <div class=" table-responsive col-xl-6">
     <div class="text-center">
-        <h3><b>Štatistiky študenta</b></h3>
+        <h3><b>Štatistiky študenta </b></h3>
     </div>
 
     <table id="detail" class="table table-striped table-bordered table-hover border-dark text-center">

@@ -15,41 +15,14 @@
 @section('content')
     <div class="katex">
     {{-- TODO ULOZIT CISLO DO DB, COUNTER PRE POCET ULOH, RNG, --}}
-        {{ $taskFound = false }}
-    @foreach ($latexLines as $line)
-        {{-- // zobrazenie ideciek - na ulozenie do db podla random number gen//--}}
-        @if(\Illuminate\Support\Str::contains($line, $task_num))
-            {{ $taskFound = true }}
-            <br>
-        @endif
-        @if($taskFound == true)
-            @if(\Illuminate\Support\Str::contains($line, "$"))
-                {{-- {!! $text =  \App\Http\Controllers\ProblemController::displayEquation($line) !!}
-
-                @continue--}}
-            @elseif(\Illuminate\Support\Str::contains($line, "\includegraphics"))
-                {{-- TODO CESTA IDE V STRINGU ALE NIE VEZ FUNCKIU - VARDUMP UKAZUJE MALO ZNAKOV ALE VYPISE SPRAVNE--}}
-                <p>{{ \App\Http\Controllers\ProblemController::getStringInCurlyBraces($line) }}</p>
-                <img src="{{asset(\App\Http\Controllers\ProblemController::getStringInCurlyBraces($line))}}" alt="image">
-                @endif
-            @endif
-
-
-        {{-- TODO: TU JE ZAZNAMENANA ODPOVED - ulozit do databazy--}}
-        @if(\Illuminate\Support\Str::contains($line, "\dfrac{"))
-            {!! '\[' . $line . '\]' !!}
-        @endif
-        {{--{!! '\[' . $line . '\]' !!}--}}
-    @endforeach
-
-</div>
-
-<form action="" method="post">
-    <div class="container input-group mb-3">
-        <label for="answer-id">Odpoveď<input type="text" id="answer-id" class="form-control"></label>
+        <h5>{{$equation}}</h5>
+        <img src="{{asset($src)}}" alt="image" style="margin-left: auto;margin-right: auto;width: 50%;display: block">
     </div>
-    <div class="container input-group mb-3">
-        <button class="btn btn-success" type="submit">Odpovedať</button>
+    <hr>
+<form action="" method="post">
+    <div class="mb-3" style="width: 40%; margin-right: auto;margin-left: auto">
+        <label for="answer-id" class="me-lg-5">Odpoveď<input type="text" id="answer-id" class="form-control" style="width: 120%"></label>
+        <button class="btn btn-success justify-content-center" type="submit">Odpovedať</button>
     </div>
 
 </form>

@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/problem', [\App\Http\Controllers\ProblemController::class, 'getFilePath'])->name("problem");
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/problem', [\App\Http\Controllers\ProblemController::class, 'fetchData'])->name("problem");
+});
+//Route::get('/problem', [\App\Http\Controllers\ProblemController::class, 'fetchData'])->name("problem");
 
 Route::get('/', function () {
     return view('welcome');
