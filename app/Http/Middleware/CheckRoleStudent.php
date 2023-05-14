@@ -20,7 +20,7 @@ class CheckRoleStudent
 
         if ($role != "student"){
             //TODO do teacherovej hlavnej
-            return redirect()->route("");
+            return redirect()->route("studentstats");
         }
 
         echo "ide next request";

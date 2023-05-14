@@ -21,7 +21,7 @@ class CheckRoleTeacher
         if ($role != "teacher"){
             //var_dump("Teacher");
             //TODO do studentovej hlavnej stranky
-            return redirect()->route("studentstats");
+            return redirect()->route("studentfiles");
         }
 
         echo "ide next request";
