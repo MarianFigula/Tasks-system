@@ -18,7 +18,7 @@
 
     <p style="font-family: DejaVu Sans;">dlasi odstavec kludne, musi tu byt takyto font kvoli pdf utf-8</p>
 
-    <a style="font-family: DejaVu Sans;" href="{{ route('teacher-pdf') }}" target="_blank">Download as PDF</a>
+    <a style="font-family: DejaVu Sans;" href="{{ route('teacher-pdf') }}" target="_blank">Stiahnúť PDF</a>
 @endsection
 
 
