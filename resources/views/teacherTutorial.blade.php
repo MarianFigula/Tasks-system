@@ -7,9 +7,13 @@
 
     @section('pdf')
         <h1 style="font-family: DejaVu Sans;">Návod pre učiteľa</h1>
-        <p style="font-family: DejaVu Sans;">V tomto bude celý návopd pre učiteľa čo am akde všetko ako robiť a tak.ddddddddddddddddddddddddddddd ddddddddddddddddddddddddddddddd ddddddddddddddddddddddddddddddd ddddddddddddd.</p>
+        <p style="font-family: DejaVu Sans;">Po prihlásení sa učiteľovi zobrazí prehľadná tabuľka študentov,
+            v ktorej si môže prezerať koľko úloh študent riešil a koľko za ne dostal bodov.</p>
+        <p style="font-family: DejaVu Sans;">Po kliknutí na tlačidlo detail sa zobrazia podrobné výsledky daného študenta.</p>
 
-        <div style="font-family: DejaVu Sans;"> ďalší tag kludne</div>
+        <p style="font-family: DejaVu Sans;">Po kliknutí na tlačidlo priradiť sa zobrazí prehľad na priradenie ďalších úloh študentovi.</p>
+
+        <p style="font-family: DejaVu Sans;">V navigačnej lište sa nachádzajú odkazy na Návod na použitie, Domovskú stránku a Súbory s úlohami.</p>
     @show
 
     <p style="font-family: DejaVu Sans;">dlasi odstavec kludne, musi tu byt takyto font kvoli pdf utf-8</p>

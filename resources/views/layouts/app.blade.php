@@ -41,14 +41,21 @@
         <div class="container">
             @if(auth()->user() != null && auth()->user()->role == 'student')
                 <a class="navbar-brand" href="{{ url('/studentTutorial') }}">
-                    Návod na používanie portálu
+                    Návod na používanie
                 </a>
             @endif
             @if(auth()->user() != null && auth()->user()->role == 'teacher')
                 <a class="navbar-brand" href="{{ url('/teacherTutorial') }}">
-                    Návod na používanie portálu
+                    Návod na používanie
                 </a>
             @endif
+            <a class="navbar-brand" href="{{ url('/studentstats') }}">Domov</a>
+            @if(auth()->user() != null && auth()->user()->role == 'teacher')
+                <a class="navbar-brand" href="{{ url('/files') }}">
+                    Súbory
+                </a>
+            @endif
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
