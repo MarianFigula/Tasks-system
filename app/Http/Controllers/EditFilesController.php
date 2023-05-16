@@ -18,7 +18,6 @@ class EditFilesController extends Controller
 
         $query = DB::select('select * from files f where f.id = ?',[$fileid]);
 
-        var_dump($query);
         $data = compact('query','fileid', 'studentid');
 
         return view('editfiles')->with($data);

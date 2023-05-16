@@ -8,6 +8,7 @@
   pre pokracovanie sa prihlaste/zaregistruje, + autori zadania - volna ruka pre dizajn
 - dizajn studentstats.blade.php
 - dizajn studentdetails.blade.php
+- welcome page dizajn
  
 
 
