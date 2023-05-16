@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use \Illuminate\Support\Str;
@@ -22,7 +24,8 @@ class ProblemController extends Controller
     }
 
 
-    public function regexEquation($string){
+    public function regexEquation($string)
+    {
         //$pos = strpos( $string, '$');
         $string = preg_replace('/\$/', '\[', $string, 1);
         $string = preg_replace('/\$/', '\]', $string, 1);
@@ -30,7 +33,8 @@ class ProblemController extends Controller
     }
 
 
-    function fetchData(){
+    function fetchData()
+    {
         $student_id = session('student_id');
         $file_id = session('file_id');
         $path = session('path');
@@ -40,14 +44,15 @@ class ProblemController extends Controller
 
         $this->updateTaskNumberInDatabase($task_num, $file_id, $student_id);
         $data = $this->parseLatexData($latexLines, $task_num);
+        //var_dump($data);
 
-        return view('problem', ['latexLines' => $latexLines, 'resultArray' => $data[0], 'src' => $data[1], 'correctAnswer' => $data[2]]);
+        return view('problem', ['latexLines' => $latexLines, 'src' => $data[0], 'correctAnswer' => $data[1], 'task' => $data[2]]);
     }
 
     function updateTaskNumberInDatabase($task_num, $file_id, $student_id)
     {
         //var_dump($task_num);
-        DB::update("update student_tasks as st SET st.task_num ='".$task_num."' where st.file_id=".$file_id.' and st.student_id='.$student_id);
+        DB::update("update student_tasks as st SET st.task_num ='" . $task_num . "' where st.file_id=" . $file_id . ' and st.student_id=' . $student_id);
     }
 
     // TODO FIX
@@ -61,11 +66,11 @@ class ProblemController extends Controller
 
         $numberOfProblems = $this->getNumberOfProblems($latexLines);
 
-        $random = rand(1,$numberOfProblems-1);
+        $random = rand(1, $numberOfProblems - 1);
         $count = 0;
-        foreach ($latexLines as $line){
-            if(STR::contains($line, "\section*{")){
-                if ($count == $random){
+        foreach ($latexLines as $line) {
+            if (STR::contains($line, "\section*{")) {
+                if ($count == $random) {
                     return self::getStringInCurlyBraces($line);
                 }
                 $count++;
@@ -77,14 +82,14 @@ class ProblemController extends Controller
     function getLinesFromFile($path): array
     {
         // TODO: tu bude path
-        $filePath = public_path('../priklady/blokovka02pr.tex');
+        $filePath = public_path('../priklady/odozva02pr.tex');
 
         try {
             $latexContent = File::get($filePath);
             //$latexContent = str_replace('$', '', $latexContent);
             $latexLines = explode("\n", $latexContent);
             return $latexLines;
-        }catch (Exception $e){
+        } catch (Exception $e) {
             return [];
         }
 
@@ -93,8 +98,8 @@ class ProblemController extends Controller
     public function getNumberOfProblems($latexLines): int
     {
         $count = 0;
-        foreach ($latexLines as $line){
-            if(STR::contains($line, "\section*{")){
+        foreach ($latexLines as $line) {
+            if (STR::contains($line, "\section*{")) {
                 $count++;
             }
         }
@@ -102,59 +107,113 @@ class ProblemController extends Controller
 
     }
 
-    function parseLatexData($latexLines, $task_num){
+    function parseLatexData($latexLines, $task_num)
+    {
         $taskFound = false;
-        $resultArray = array();
+        $solutionFound = false;
+        $solutionEquationFound = false;
+        $assignmentFound = false;
+        $assignmentEquationFound = false;
         $src = "";
         $correctAnswer = "";
-        foreach ($latexLines as $line){
-            if (Str::contains($line, $task_num)){
+        $task = "";
+        foreach ($latexLines as $line) {
+            $line = str_replace('\\\\', '', $line);
+            if (Str::contains($line, $task_num)) {
                 $taskFound = true;
+                continue;
             }
-            if ($taskFound){
+            if ($taskFound) {
 
-                if (Str::contains($line, 'F(s)') ){
-                    // toto je len pre blokovka01
-                    if (Str::contains($line, '$')){
-                        $resultArray = explode('$', $line);
-                        print_r($resultArray); // cely riadok - vid blokovka01/02
+                if (Str::contains($line,'\begin{task}')) {
+                    $assignmentFound = true;
+                    continue;
+                }
+
+                if($assignmentFound) {
+                    if (Str::contains($line,'\end{task}')) {
+                        $assignmentFound = false;
                         continue;
                     }
+                    if (Str::contains($line,'\end{equation*}')) {
+                        continue;
+                    }
+                    if (Str::contains($line,'\begin{equation*}')) {
+                        $assignmentEquationFound = true;
+                        continue;
+                    }
+                    if($assignmentEquationFound){
+                        $task .= '\['.$line.'\]';
+                        $assignmentEquationFound = false;
+                        continue;
+                    }
+                    $pattern = '/\$(.*?)\$/';
+                    preg_match_all($pattern, $line, $matches);
+
+                    if (!Str::contains(trim($line),"\\") && !Str::contains(trim($line),"$")) {
+                        $task = $task . $line;
+                        continue;
+                    }
+
+                    if (count($matches[1]) != 0) {
+                        for ($x = 0; $x < count($matches[1]); $x++){
+                            $substring = '\['.$matches[1][$x].'\]';
+                            $line = preg_replace($pattern, $substring, $line, 1);
+                        }
+                        $task = $task . $line;
+                        continue;
+                    }
+
+                    if (empty(trim($line))) {
+                        continue;
+                    }
+                    if (Str::contains($line, "\includegraphics")) {
+                        $src = $this->getStringInCurlyBraces($line);
+                        continue;
+                    }
+
                 }
 
-                if (strpos(trim($line), "\\") === strlen($line) ||
-                    strpos(trim($line), "\\") === strlen($line)-1){
-
-                    //$resultArray[] = $line;
-
-                }if (strpos(trim($line), "\\") === 1) {
-
+                if($assignmentEquationFound){
+                    $equation = '\['.$line.'\]';
+                    $assignmentEquationFound = false;
+                    continue;
                 }
-                //if (strpos(trim($line), "\\") === false){
-                //    $resultArray[] = $line;
-                //}
+                $pattern = '/\$(.*?)\$/';
+                preg_match($pattern, $line, $matches);
 
+
+                if (isset($matches[1])) {
+                    $substring = $matches[1];
+                    $equation = '\['.$substring.'\]';
+                    continue;
+                }
 
                 if (Str::contains($line, "\includegraphics")) {
                     $src = $this->getStringInCurlyBraces($line);
                     continue;
                 }
-                if (Str::contains($line, 'y(')){
-                    $line = $this->regexEquation($line);
+                if (Str::contains($line,'\begin{solution}')) {
+                    $solutionFound = true;
                 }
-
-                // ziskanie spravnej odpovede
-                if (Str::contains($line, '\dfrac{')){
-                    //$this->updateAnswerInDatabase($line, $file_id,$student_id);
-                    $correctAnswer = $this->getStringInCurlyBraces($line);
-                    $taskFound = false;
+                if ($solutionFound){
+                    if (Str::contains($line,'\begin{equation*}')) {
+                        $solutionEquationFound = true;
+                    }
                 }
-
+                if ($solutionEquationFound){
+                    if (!Str::contains($line,'\begin{equation*}')) {
+                        $correctAnswer = '\['.$line.'\]';
+                        $solutionEquationFound = false;
+                        $solutionFound = false;
+                        $taskFound = false;
+                    }
+                }
             }
-
         }
-        return [$resultArray, $src, $correctAnswer];
+        return [$src, $correctAnswer, $task];
 
     }
 
 }
+
