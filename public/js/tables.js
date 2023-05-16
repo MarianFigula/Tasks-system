@@ -5,7 +5,7 @@ $(document).ready(function () {
         paging: true,
         lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"] ],
         columnDefs: [
-            {orderable: false, targets: [1,2,3,4,5] },
+            {orderable: false, targets: [1,2,3,4] },
             {orderable: true, className: 'reorder', targets: [0]}
         ]
     });

@@ -12,10 +12,10 @@
         <thead class="bg-dark text-white">
         <tr class="text-center">
             <th>ID súboru</th>
+            <th>Názov súboru</th>
             <th>Číslo úlohy</th>
-            <th>Odovzdaná</th>
             <th>Odpoveď</th>
-            <th>Správna</th>
+            <th>Správnosť</th>
             <th>Body</th>
         </tr>
         </thead>
@@ -23,10 +23,20 @@
         @foreach($query as $item)
             <tr>
                 <td>{{$item->file_id}}</td>
+                <td>{{$item->path}}</td>
                 <td>{{$item->task_num}}</td>
-                <td>{{$item->task_sub}}</td>
-                <td>ODPOVEĎ</td>
-                <td>{{$item->task_correct}}</td>
+                @if($item->student_answer)
+                    <td>Odovzdané</td>
+                @else
+                    <td>Neodovzdané</td>
+                @endif
+                @if($item->task_correct)
+                    <td>Správne</td>
+                @elseif($item->student_answer==null)
+                    <td>Neodovzdané</td>
+                @else
+                    <td>Nesprávne</td>
+                @endif
                 <td>{{$item->points}}</td>
             </tr>
         @endforeach

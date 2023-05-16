@@ -17,7 +17,7 @@ class StudentDetailsController extends Controller
     public function getId($id)
     {
 
-        $query = DB::select('select st.file_id, st.task_num, st.task_sub, /*st.student_answer,*/ st.task_correct, f.points from student_tasks st JOIN files f ON f.id = st.file_id WHERE st.student_id = ?', [$id]);
+        $query = DB::select('select st.file_id, st.task_num, st.task_gen, st.student_answer, st.task_correct, f.points, f.path from student_tasks st JOIN files f ON f.id = st.file_id WHERE st.student_id = ?', [$id]);
 
         return view('studentdetails')->with('query',$query);
 
