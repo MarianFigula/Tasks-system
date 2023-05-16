@@ -1,5 +1,5 @@
 var generateLatex = function(expr) {
-    var latexString = '';
+	var latexString = '';
     console.log(expr);
     if(expr.hasOwnProperty("operands")) {
         for (var i = 0; i < expr.operands.topLevelContainer.length; i++) {
@@ -230,74 +230,74 @@ var generateLatex = function(expr) {
 }
 
 var symbolToLatex = function(expr) {
-    var latexString = '';
-    var symbolToLatexMapping = {
-        '∂': '\\partial',
-        '∞': '\\infty',
-        'Γ': '\\Gamma',
-        'Δ': '\\Delta',
-        'Θ': '\\Theta',
-        'Λ': '\\Lambda',
-        'Ξ': '\\Xi',
-        'Π': '\\Pi',
-        'Σ': '\\Sigma',
-        'Υ': '\\Upsilon',
-        'Φ': '\\Phi',
-        'Ψ': '\\Psi',
-        'Ω': '\\Omega',
-        'α': '\\alpha',
-        'β': '\\beta',
-        'γ': '\\gamma',
-        'δ': '\\delta',
-        'ε': '\\varepsilon',
-        'ϵ': '\\epsilon',
-        'ζ': '\\zeta',
-        'η': '\\eta',
-        'θ': '\\theta',
-        'ϑ': '\\vartheta',
-        'ι': '\\iota',
-        'κ': '\\kappa',
-        'λ': '\\lambda',
-        'μ': '\\mu',
-        'ν': '\\nu',
-        'ξ': '\\xi',
-        'π': '\\pi',
-        'ϖ': '\\varpi',
-        'ρ': '\\rho',
-        'ϱ': '\\varrho',
-        'σ': '\\sigma',
-        'ς': '\\varsigma',
-        'τ': '\\tau',
-        'υ': '\\upsilon',
-        'φ': '\\varphi',
-        'ϕ': '\\phi',
-        'χ': '\\chi',
-        'ψ': '\\psi',
-        'ω': '\\omega',
-        'ı': '\\imath',
-        'ȷ': '\\jmath'
-    }
-    if (typeof symbolToLatexMapping[expr.value] === 'undefined') {
-        latexString = expr.value;
-    } else {
-        latexString = symbolToLatexMapping[expr.value];
-    }
-    return latexString;
+	var latexString = '';
+	var symbolToLatexMapping = {
+		'∂': '\\partial',
+		'∞': '\\infty',
+		'Γ': '\\Gamma',
+		'Δ': '\\Delta',
+		'Θ': '\\Theta',
+		'Λ': '\\Lambda',
+		'Ξ': '\\Xi',
+		'Π': '\\Pi',
+		'Σ': '\\Sigma',
+		'Υ': '\\Upsilon',
+		'Φ': '\\Phi',
+		'Ψ': '\\Psi',
+		'Ω': '\\Omega',
+		'α': '\\alpha',
+		'β': '\\beta',
+		'γ': '\\gamma',
+		'δ': '\\delta',
+		'ε': '\\varepsilon',
+		'ϵ': '\\epsilon',
+		'ζ': '\\zeta',
+		'η': '\\eta',
+		'θ': '\\theta',
+		'ϑ': '\\vartheta',
+		'ι': '\\iota',
+		'κ': '\\kappa',
+		'λ': '\\lambda',
+		'μ': '\\mu',
+		'ν': '\\nu',
+		'ξ': '\\xi',
+		'π': '\\pi',
+		'ϖ': '\\varpi',
+		'ρ': '\\rho',
+		'ϱ': '\\varrho',
+		'σ': '\\sigma',
+		'ς': '\\varsigma',
+		'τ': '\\tau',
+		'υ': '\\upsilon',
+		'φ': '\\varphi',
+		'ϕ': '\\phi',
+		'χ': '\\chi',
+		'ψ': '\\psi',
+		'ω': '\\omega',
+		'ı': '\\imath',
+		'ȷ': '\\jmath'
+	}
+	if (typeof symbolToLatexMapping[expr.value] === 'undefined') {
+		latexString = expr.value;
+	} else {
+		latexString = symbolToLatexMapping[expr.value];
+	}
+	return latexString;
 }
 
 var bigOperatorToLatex = function(expr) {
-    var latexString = '';
-    var lowerLimitString = '';
-    var upperLimitString = '';
-    var operandString = '';
-    if (typeof expr.operands.lowerLimit !== "undefined") {
-        lowerLimitString = '_{' + generateLatex(expr.operands.lowerLimit) + '}';
-    }
-    if (typeof expr.operands.upperLimit !== "undefined") {
-        upperLimitString = '^{' + generateLatex(expr.operands.upperLimit) + '}';
-    }
-    operandString = generateLatex(expr.operands.operand);
-    var bigOperatorToLatexMapping = {
+	var latexString = '';
+	var lowerLimitString = '';
+	var upperLimitString = '';
+	var operandString = '';
+	if (typeof expr.operands.lowerLimit !== "undefined") {
+		lowerLimitString = '_{' + generateLatex(expr.operands.lowerLimit) + '}';
+	}
+	if (typeof expr.operands.upperLimit !== "undefined") {
+		upperLimitString = '^{' + generateLatex(expr.operands.upperLimit) + '}';
+	}
+	operandString = generateLatex(expr.operands.operand);
+	var bigOperatorToLatexMapping = {
         sum: '\\sum',
         bigCap: '\\bigcap',
         bigCup: '\\bigcup',
@@ -307,20 +307,20 @@ var bigOperatorToLatex = function(expr) {
         coProd: '\\coprod',
         bigVee: '\\bigvee',
         bigWedge: '\\bigwedge'
-    }
-    latexString = bigOperatorToLatexMapping[expr.value] + lowerLimitString + upperLimitString + operandString;
-    return latexString;
+	}
+	latexString = bigOperatorToLatexMapping[expr.value] + lowerLimitString + upperLimitString + operandString;
+	return latexString;
 }
 
 var functionToLatex = function(expr) {
-    var latexString = '';
-    latexString = '\\' + expr.value;
-    return latexString;
+	var latexString = '';
+	latexString = '\\' + expr.value;
+	return latexString;
 }
 
 var bracketToLatex = function(expr) {
-    var latexString = '';
-    var bracketToLatexMapping = {
+	var latexString = '';
+	var bracketToLatexMapping = {
         leftParenthesisBracket: '\\left(',
         rightParenthesisBracket: '\\right)',
         leftSquareBracket: '\\left[',
@@ -335,53 +335,53 @@ var bracketToLatex = function(expr) {
         rightCeilBracket: '\\right\\rceil'
     };
     latexString = bracketToLatexMapping[expr.value];
-    return latexString;
+	return latexString;
 }
 
 var operatorToLatex = function(expr) {
-    var latexString = '';
-    var operatorToLatexMapping = {
-        '+': '+',
-        '−': '-',
-        '=': '=',
-        '<': '<',
-        '>': '>',
-        '≤': '\\leq',
-        '≥': '\\geq',
-        '≈': '\\approx',
-        '≡': '\\equiv',
-        '≅': '\\cong',
-        '≠': '\\neq',
-        '∼': '\\sim',
-        '∝': '\\propto',
-        '≺': '\\prec',
-        '⪯': '\\preceq',
-        '⊂': '\\subset',
-        '⊆': '\\subseteq',
-        '≻': '\\succ',
-        '⪰': '\\succeq',
-        '◦': '\\circ',
-        '∈': '\\in',
-        '×': '\\times',
-        '±': '\\pm',
-        '∧': '\\wedge',
-        '∨': '\\vee',
-        '⊥': '\\perp',
-        '∣': '\\mid',
-        '∥': '\\parallel',
-        ':': ':',
-        '÷': '\\div',
-        '⋅': '\\cdot',
-        '=': '='
-    };
-    latexString = operatorToLatexMapping[expr.value];
-    return latexString;
+	var latexString = '';
+	var operatorToLatexMapping = {
+		'+': '+',
+		'−': '-',
+		'=': '=',
+		'<': '<',
+		'>': '>',
+		'≤': '\\leq',
+		'≥': '\\geq',
+		'≈': '\\approx',
+		'≡': '\\equiv',
+		'≅': '\\cong',
+		'≠': '\\neq',
+		'∼': '\\sim',
+		'∝': '\\propto',
+		'≺': '\\prec',
+		'⪯': '\\preceq',
+		'⊂': '\\subset',
+		'⊆': '\\subseteq',
+		'≻': '\\succ',
+		'⪰': '\\succeq',
+		'◦': '\\circ',
+		'∈': '\\in',
+		'×': '\\times',
+		'±': '\\pm',
+		'∧': '\\wedge',
+		'∨': '\\vee',
+		'⊥': '\\perp',
+		'∣': '\\mid',
+		'∥': '\\parallel',
+		':': ':',
+		'÷': '\\div',
+		'⋅': '\\cdot',
+		'=': '='
+	};
+	latexString = operatorToLatexMapping[expr.value];
+	return latexString;
 }
 
 var bracketPairToLatex = function(expr) {
-    var latexString = '';
-    var bracketedExpression = generateLatex(expr.operands.bracketedExpression);
-    var bracketPairToLatexMapping = {
+	var latexString = '';
+	var bracketedExpression = generateLatex(expr.operands.bracketedExpression);
+	var bracketPairToLatexMapping = {
         "parenthesisBracket": '\\left(' + bracketedExpression + '\\right)',
         "squareBracket": '\\left[' + bracketedExpression + '\\right]',
         "curlyBracket": '\\left\\{' + bracketedExpression + '\\right\\}',
@@ -392,113 +392,113 @@ var bracketPairToLatex = function(expr) {
         "normBracket": '\\left\\|' + bracketedExpression + '\\right\\|'
     };
     latexString = bracketPairToLatexMapping[expr.value];
-    return latexString;
+	return latexString;
 }
 
 var integralToLatex = function(expr) {
-    var latexString = '';
-    var lowerLimitString = '';
-    var upperLimitString = '';
-    if (typeof expr.operands.lowerLimit !== "undefined") {
-        lowerLimitString = '_{' + generateLatex(expr.operands.lowerLimit) + '}';
-    }
-    if (typeof expr.operands.upperLimit !== "undefined") {
-        upperLimitString = '^{' + generateLatex(expr.operands.upperLimit) + '}';
-    }
-    var integralToLatexMapping = {
+	var latexString = '';
+	var lowerLimitString = '';
+	var upperLimitString = '';
+	if (typeof expr.operands.lowerLimit !== "undefined") {
+		lowerLimitString = '_{' + generateLatex(expr.operands.lowerLimit) + '}';
+	}
+	if (typeof expr.operands.upperLimit !== "undefined") {
+		upperLimitString = '^{' + generateLatex(expr.operands.upperLimit) + '}';
+	}
+	var integralToLatexMapping = {
         'single': '\\int',
         'double': '\\iint',
         'triple': '\\iiint',
         'singleContour': '\\oint',
         'doubleContour': '\\oiint',
         'tripleContour': '\\oiiint'
-    };
-    latexString = integralToLatexMapping[expr.value] + lowerLimitString + upperLimitString;
-    return latexString;
+	};
+	latexString = integralToLatexMapping[expr.value] + lowerLimitString + upperLimitString;
+	return latexString;
 }
 
 var accentToLatex = function(expr) {
-    var latexString = '';
-    var accentedExpression = '{' + generateLatex(expr.operands.accentedExpression) + '}';
-    var accentToLatexMapping = {
-        '˙': '\\dot',
-        '^': '\\hat',
-        '⃗': '\\vec',
-        '¯': '\\bar'
-    }
-    latexString = accentToLatexMapping[expr.value] + accentedExpression;
-    return latexString;
+	var latexString = '';
+	var accentedExpression = '{' + generateLatex(expr.operands.accentedExpression) + '}';
+	var accentToLatexMapping = {
+		'˙': '\\dot',
+		'^': '\\hat',
+		'⃗': '\\vec',
+		'¯': '\\bar'
+	}
+	latexString = accentToLatexMapping[expr.value] + accentedExpression;
+	return latexString;
 }
 
 var functionLowerToLatex = function(expr) {
-    var latexString = '';
-    var lower = '_{' + generateLatex(expr.operands.lower) + '}';
-    latexString = '\\' + expr.value + lower;
-    return latexString;
+	var latexString = '';
+	var lower = '_{' + generateLatex(expr.operands.lower) + '}';
+	latexString = '\\' + expr.value + lower;
+	return latexString;
 }
 
 var limitToLatex = function(expr) {
-    var latexString = '\\lim';
-    var lower = '_{' + generateLatex(expr.operands.left) + ' \\to ' + generateLatex(expr.operands.right) + '}';
-    latexString += lower;
-    return latexString;
+	var latexString = '\\lim';
+	var lower = '_{' + generateLatex(expr.operands.left) + ' \\to ' + generateLatex(expr.operands.right) + '}';
+	latexString += lower;
+	return latexString;
 }
 
 var logLowerToLatex = function(expr) {
-    var latexString = '\\log';
-    var lower = '_{' + generateLatex(expr.operands.lower) + '}';
-    latexString += lower;
-    return latexString;
+	var latexString = '\\log';
+	var lower = '_{' + generateLatex(expr.operands.lower) + '}';
+	latexString += lower;
+	return latexString;
 }
 
 var matrixToLatex = function(expr) {
-    var latexString = '\\begin{array}{ccc}';
-    for (var j = 0; j < expr.operands.elements.length; j++) {
-        var row = expr.operands.elements[j];
-        var rowString = '';
-        for (var k = 0; k < row.length; k++) {
-            rowString += generateLatex(row[k]) + ' & ';
-        }
-        rowString = rowString.substring(0, rowString.length - 2) + '\\\\\r\n';
-        latexString += rowString;
-    }
-    latexString += '\\end{array}';
-    return latexString;
+	var latexString = '\\begin{array}{ccc}';
+	for (var j = 0; j < expr.operands.elements.length; j++) {
+		var row = expr.operands.elements[j];
+		var rowString = '';
+		for (var k = 0; k < row.length; k++) {
+			rowString += generateLatex(row[k]) + ' & ';
+		}
+		rowString = rowString.substring(0, rowString.length - 2) + '\\\\\r\n';
+		latexString += rowString;
+	}
+	latexString += '\\end{array}';
+	return latexString;
 }
 
 var nthRootToLatex = function(expr) {
-    var latexString = '\\sqrt';
-    var degree = '[' + generateLatex(expr.operands.degree) + ']';
-    var radicand = '{' + generateLatex(expr.operands.radicand) + '}';
-    latexString += degree + radicand;
-    return latexString;
+	var latexString = '\\sqrt';
+	var degree = '[' + generateLatex(expr.operands.degree) + ']';
+	var radicand = '{' + generateLatex(expr.operands.radicand) + '}';
+	latexString += degree + radicand;
+	return latexString;
 }
 
 var squareRootToLatex = function(expr) {
-    var latexString = '\\sqrt';
-    var radicand = '{' + generateLatex(expr.operands.radicand) + '}';
-    latexString += radicand;
-    return latexString;
+	var latexString = '\\sqrt';
+	var radicand = '{' + generateLatex(expr.operands.radicand) + '}';
+	latexString += radicand;
+	return latexString;
 }
 
 var stackedFractionToLatex = function(expr) {
-    var latexString = '\\frac';
-    var numerator = '{' + generateLatex(expr.operands.numerator) + '}';
-    var denominator = '{' + generateLatex(expr.operands.denominator) + '}';
-    latexString += numerator + denominator;
-    return latexString;
+	var latexString = '\\frac';
+	var numerator = '{' + generateLatex(expr.operands.numerator) + '}';
+	var denominator = '{' + generateLatex(expr.operands.denominator) + '}';
+	latexString += numerator + denominator;
+	return latexString;
 }
 
 var subscriptToLatex = function(expr) {
-    var latexString = '';
-    var subscript = '_{' + generateLatex(expr.operands.subscript) + '}';
-    latexString += subscript;
-    return latexString;
+	var latexString = '';
+	var subscript = '_{' + generateLatex(expr.operands.subscript) + '}';
+	latexString += subscript;
+	return latexString;
 }
 
 var superscriptToLatex = function(expr) {
-    var latexString = '';
-    var superscript = '^{' + generateLatex(expr.operands.superscript) + '}';
-    latexString += superscript;
-    return latexString;
+	var latexString = '';
+	var superscript = '^{' + generateLatex(expr.operands.superscript) + '}';
+	latexString += superscript;
+	return latexString;
 }
