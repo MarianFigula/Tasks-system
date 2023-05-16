@@ -16,11 +16,8 @@ class CheckRoleTeacher
     public function handle(Request $request, Closure $next): Response
     {
         $role = auth()->user()->role;
-        //var_dump($role);
 
         if ($role != "teacher"){
-            //var_dump("Teacher");
-            //TODO do studentovej hlavnej stranky
             return redirect()->route("studentfiles");
         }
 
