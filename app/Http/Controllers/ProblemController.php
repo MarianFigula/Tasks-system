@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use \Illuminate\Support\Str;
 use PHPUnit\Exception;
+use App\Http\Controllers\OctaveController;
 
 class ProblemController extends Controller
 {
@@ -204,7 +205,7 @@ class ProblemController extends Controller
                 }
                 if ($solutionEquationFound){
                     if (!Str::contains($line,'\begin{equation*}')) {
-                        $correctAnswer = '\['.$line.'\]';
+                        $correctAnswer = trim($line);
                         $solutionEquationFound = false;
                         $solutionFound = false;
                         $taskFound = false;
@@ -214,6 +215,10 @@ class ProblemController extends Controller
         }
         return [$src, $correctAnswer, $task];
 
+    }
+
+    public function solve(Request $request){
+        dd($request);
     }
 
 }

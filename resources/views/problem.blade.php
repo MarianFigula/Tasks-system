@@ -17,6 +17,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {{--$latex_code = file_get_contents('C:\Users\ajoaj\PhpstormProjects\webte2\zaverecneZadanieWebte\zadanie99\blokovka01pr.tex')--}}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js" integrity="sha512-DmQnZdEjFh4R/040JxDSg3j9cS8D0oC5u2noG9Az18F11leiDFwrTOkm9PP+jdBMiH66QBa73O+54kZr5FyU7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js" integrity="sha512-VW8/i4IZkHxdD8OlqNdF7fGn3ba0+lYqag+Uy4cG6BtJ/LIr8t23s/vls70pQ41UasHH0tL57GQfKDApqc9izA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 @section('content')
     <div class="katex">
@@ -28,11 +30,12 @@
         @endif
     </div>
     <hr>
-    <form action="" method="post">
+    <form action="{{url('problem')}}" method="post">
         <div class="mb-3" style="width: 40%; margin-right: auto;margin-left: auto">
-            <label for="answer-id" class="me-lg-5">Odpoveď<input type="text" id="answer-id" class="form-control"
+            <label for="answer-id" class="me-lg-5">Odpoveď<input type="text" name="answer-id" id="answer-id" class="form-control"
                                                                  style="width: 120%"></label>
             <button class="btn btn-success justify-content-center" type="submit">Odpovedať</button>
+            <input type="hidden" name="correct-answer" value="{{$correctAnswer}}">
         </div>
 
     </form>
@@ -49,11 +52,9 @@
     });
     </script>
      --}}
+    <script>
+        const rational = math.parse('(12s+4)/(s^3+10s^2+13s+14)')
+        console.log(math.simplify(rational, {}, {context: math.simplify.realContext}).toString())
+    </script>
 @endsection
 
-
-<script>
-    const rational = math.parse('(12s+4)/(s^3+10s^2+13s+14)')
-    console.log(math.simplify(rational, {}, {context: math.simplify.realContext}).toString())
-
-</script>

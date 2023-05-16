@@ -46,3 +46,4 @@ Route::post('/assigntasks', [App\Http\Controllers\AssignTasksController::class, 
 Route::get('/editfiles/{fileid}/{studentid}', [App\Http\Controllers\EditFilesController::class, 'getId'])->middleware(CheckRoleTeacher::class)->name('editfiles1');
 Route::post('/editfiles', [App\Http\Controllers\EditFilesController::class, 'edit'])->name('editfiles2');
 Route::get('/files', [\App\Http\Controllers\FileController::class, 'displayFiles'])->name("displayfiles");
+Route::post('/problem', [App\Http\Controllers\ProblemController::class, 'solve'])->middleware(CheckRoleStudent::class)->name('editfiles1');;
