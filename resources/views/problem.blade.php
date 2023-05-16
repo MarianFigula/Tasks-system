@@ -452,7 +452,7 @@
 
 
 <button id="toJSON">To JSON</button>
-<button id="toLatex">To LaTeX</button>
+
 <br/><br/>
 <input id="hiddenFocusInput" style="width: 0; height: 0; opacity: 0; position: absolute; top: 0; left: 0;" type="text"
        autocapitalize="off"/>
@@ -466,9 +466,6 @@
         <li class="outerTab"><a href="#brackets">Brackets</a></li>
         <li class="outerTab"><a href="#symbols">Symbols</a></li>
         <li class="outerTab"><a href="#functions">Functions</a></li>
-        <li class="outerTab"><a href="#largeOperators">Large Operators</a></li>
-        <li class="outerTab"><a href="#integrals">Integrals</a></li>
-        <li class="outerTab"><a href="#misc">Misc</a></li>
     </ul>
 
     <div class="tab-content" id="tab-content-top">
@@ -654,266 +651,18 @@
                 </div>
             </div>
         </div>
-
-        <div id="largeOperators" class="tab outer">
-            <ul class="inner-tab-links tab-links">
-                <li class="innerTab active"><a href="#largeOperatorsSum"><img class="innerTabImg"
-                                                                              src="{{asset('equation-editor-master/src/MenuImages/png/sumSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#largeOperatorsBigCap"><img class="innerTabImg"
-                                                                          src="{{asset('equation-editor-master/src/MenuImages/png/bigCapSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#largeOperatorsBigCup"><img class="innerTabImg"
-                                                                          src="{{asset('equation-editor-master/src/MenuImages/png/bigCupSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#largeOperatorsBigSqCap"><img class="innerTabImg"
-                                                                            src="{{asset('equation-editor-master/src/MenuImages/png/bigSqCapSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#largeOperatorsBigSqCup"><img class="innerTabImg"
-                                                                            src="{{asset('equation-editor-master/src/MenuImages/png/bigSqCupSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#largeOperatorsProd"><img class="innerTabImg"
-                                                                        src="{{asset('equation-editor-master/src/MenuImages/png/prodSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#largeOperatorsCoProd"><img class="innerTabImg"
-                                                                          src="{{asset('equation-editor-master/src/MenuImages/png/coProdSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#largeOperatorsBigVee"><img class="innerTabImg"
-                                                                          src="{{asset('equation-editor-master/src/MenuImages/png/bigVeeSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#largeOperatorsBigWedge"><img class="innerTabImg"
-                                                                            src="{{asset('equation-editor-master/src/MenuImages/png/bigWedgeSymbol.png')}}"></a>
-                </li>
-            </ul>
-            <div class="tab-content tab-content-nested">
-                <div id="largeOperatorsSum" class="tab inner active">
-                    <img class="menuItem" id="sumBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/sum.png')}}">
-                    <img class="menuItem" id="sumBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/sumNoUpper.png')}}">
-                    <img class="menuItem" id="sumBigOperatorNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/sumNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineSumBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/sumInline.png')}}">
-                    <img class="menuItem" id="inlineSumBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/sumNoUpperInline.png')}}">
-                </div>
-                <div id="largeOperatorsBigCap" class="tab inner">
-                    <img class="menuItem" id="bigCapBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigCap.png')}}">
-                    <img class="menuItem" id="bigCapBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigCapNoUpper.png')}}">
-                    <img class="menuItem" id="bigCapBigOperatorNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigCapNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineBigCapBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigCapInline.png')}}">
-                    <img class="menuItem" id="inlineBigCapBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigCapNoUpperInline.png')}}">
-                </div>
-                <div id="largeOperatorsBigCup" class="tab inner">
-                    <img class="menuItem" id="bigCupBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigCup.png')}}">
-                    <img class="menuItem" id="bigCupBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigCupNoUpper.png')}}">
-                    <img class="menuItem" id="bigCupBigOperatorNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigCupNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineBigCupBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigCupInline.png')}}">
-                    <img class="menuItem" id="inlineBigCupBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigCupNoUpperInline.png')}}">
-                </div>
-                <div id="largeOperatorsBigSqCap" class="tab inner">
-                    <img class="menuItem" id="bigSqCapBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigSqCap.png')}}">
-                    <img class="menuItem" id="bigSqCapBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigSqCapNoUpper.png')}}">
-                    <img class="menuItem" id="bigSqCapBigOperatorNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigSqCapNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineBigSqCapBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigSqCapInline.png')}}">
-                    <img class="menuItem" id="inlineBigSqCapBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigSqCapNoUpperInline.png')}}">
-                </div>
-                <div id="largeOperatorsBigSqCup" class="tab inner">
-                    <img class="menuItem" id="bigSqCupBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigSqCup.png')}}">
-                    <img class="menuItem" id="bigSqCupBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigSqCupNoUpper.png')}}">
-                    <img class="menuItem" id="bigSqCupBigOperatorNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigSqCupNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineBigSqCupBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigSqCupInline.png')}}">
-                    <img class="menuItem" id="inlineBigSqCupBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigSqCupNoUpperInline.png')}}">
-                </div>
-                <div id="largeOperatorsProd" class="tab inner">
-                    <img class="menuItem" id="prodBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/prod.png')}}">
-                    <img class="menuItem" id="prodBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/prodNoUpper.png')}}">
-                    <img class="menuItem" id="prodBigOperatorNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/prodNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineProdBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/prodInline.png')}}">
-                    <img class="menuItem" id="inlineProdBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/prodNoUpperInline.png')}}">
-                </div>
-                <div id="largeOperatorsCoProd" class="tab inner">
-                    <img class="menuItem" id="coProdBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/coProd.png')}}">
-                    <img class="menuItem" id="coProdBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/coProdNoUpper.png')}}">
-                    <img class="menuItem" id="coProdBigOperatorNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/coProdNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineCoProdBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/coProdInline.png')}}">
-                    <img class="menuItem" id="inlineCoProdBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/coProdNoUpperInline.png')}}">
-                </div>
-                <div id="largeOperatorsBigVee" class="tab inner">
-                    <img class="menuItem" id="bigVeeBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigVee.png')}}">
-                    <img class="menuItem" id="bigVeeBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigVeeNoUpper.png')}}">
-                    <img class="menuItem" id="bigVeeBigOperatorNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigVeeNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineBigVeeBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigVeeInline.png')}}">
-                    <img class="menuItem" id="inlineBigVeeBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigVeeNoUpperInline.png')}}">
-                </div>
-                <div id="largeOperatorsBigWedge" class="tab inner">
-                    <img class="menuItem" id="bigWedgeBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigWedge.png')}}">
-                    <img class="menuItem" id="bigWedgeBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigWedgeNoUpper.png')}}">
-                    <img class="menuItem" id="bigWedgeBigOperatorNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigWedgeNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineBigWedgeBigOperatorButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigWedgeInline.png')}}">
-                    <img class="menuItem" id="inlineBigWedgeBigOperatorNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/bigWedgeNoUpperInline.png')}}">
-                </div>
-            </div>
-        </div>
-
-        <div id="integrals" class="tab outer">
-            <ul class="inner-tab-links tab-links">
-                <li class="innerTab active"><a href="#integralsIntegral"><img class="innerTabImg"
-                                                                              src="{{asset('equation-editor-master/src/MenuImages/png/integralSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#integralsDoubleIntegral"><img class="innerTabImg"
-                                                                             src="{{asset('equation-editor-master/src/MenuImages/png/doubleIntegralSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#integralsTripleIntegral"><img class="innerTabImg"
-                                                                             src="{{asset('equation-editor-master/src/MenuImages/png/tripleIntegralSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#integralsContourIntegral"><img class="innerTabImg"
-                                                                              src="{{asset('equation-editor-master/src/MenuImages/png/contourIntegralSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#integralsContourDoubleIntegral"><img class="innerTabImg"
-                                                                                    src="{{asset('equation-editor-master/src/MenuImages/png/doubleContourIntegralSymbol.png')}}"></a>
-                </li>
-                <li class="innerTab"><a href="#integralsContourTripleIntegral"><img class="innerTabImg"
-                                                                                    src="{{asset('equation-editor-master/src/MenuImages/png/tripleContourIntegralSymbol.png')}}"></a>
-                </li>
-            </ul>
-            <div class="tab-content tab-content-nested">
-                <div id="integralsIntegral" class="tab inner active">
-                    <img class="menuItem" id="integralButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/integral.png')}}">
-                    <img class="menuItem" id="integralNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/integralNoUpper.png')}}">
-                    <img class="menuItem" id="integralNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/integralNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineIntegralButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/integralInline.png')}}">
-                    <img class="menuItem" id="inlineIntegralNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/integralNoUpperInline.png')}}">
-                </div>
-                <div id="integralsDoubleIntegral" class="tab inner">
-                    <img class="menuItem" id="doubleIntegralButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/doubleIntegral.png')}}">
-                    <img class="menuItem" id="doubleIntegralNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/doubleIntegralNoUpper.png')}}">
-                    <img class="menuItem" id="doubleIntegralNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/doubleIntegralNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineDoubleIntegralButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/doubleIntegralInline.png')}}">
-                    <img class="menuItem" id="inlineDoubleIntegralNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/doubleIntegralNoUpperInline.png')}}">
-                </div>
-                <div id="integralsTripleIntegral" class="tab inner">
-                    <img class="menuItem" id="tripleIntegralButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/tripleIntegral.png')}}">
-                    <img class="menuItem" id="tripleIntegralNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/tripleIntegralNoUpper.png')}}">
-                    <img class="menuItem" id="tripleIntegralNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/tripleIntegralNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineTripleIntegralButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/tripleIntegralInline.png')}}">
-                    <img class="menuItem" id="inlineTripleIntegralNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/tripleIntegralNoUpperInline.png')}}">
-                </div>
-                <div id="integralsContourIntegral" class="tab inner">
-                    <img class="menuItem" id="contourIntegralButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/contourIntegral.png')}}">
-                    <img class="menuItem" id="contourIntegralNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/contourIntegralNoUpper.png')}}">
-                    <img class="menuItem" id="contourIntegralNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/contourIntegralNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineContourIntegralButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/contourIntegralInline.png')}}">
-                    <img class="menuItem" id="inlineContourIntegralNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/contourIntegralNoUpperInline.png')}}">
-                </div>
-                <div id="integralsContourDoubleIntegral" class="tab inner">
-                    <img class="menuItem" id="contourDoubleIntegralButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/doubleContourIntegral.png')}}">
-                    <img class="menuItem" id="contourDoubleIntegralNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/doubleContourIntegralNoUpper.png')}}">
-                    <img class="menuItem" id="contourDoubleIntegralNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/doubleContourIntegralNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineContourDoubleIntegralButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/doubleContourIntegralInline.png')}}">
-                    <img class="menuItem" id="inlineContourDoubleIntegralNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/doubleContourIntegralNoUpperInline.png')}}">
-                </div>
-                <div id="integralsContourTripleIntegral" class="tab inner">
-                    <img class="menuItem" id="contourTripleIntegralButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/tripleContourIntegral.png')}}">
-                    <img class="menuItem" id="contourTripleIntegralNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/tripleContourIntegralNoUpper.png')}}">
-                    <img class="menuItem" id="contourTripleIntegralNoUpperNoLowerButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/tripleContourIntegralNoUpperNoLower.png')}}">
-                    <img class="menuItem" id="inlineContourTripleIntegralButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/tripleContourIntegralInline.png')}}">
-                    <img class="menuItem" id="inlineContourTripleIntegralNoUpperButton"
-                         src="{{asset('equation-editor-master/src/MenuImages/png/tripleContourIntegralNoUpperInline.png')}}">
-                </div>
-            </div>
-        </div>
-        <div id="misc" class="tab outer">
-            <img class="menuItem" id="dotAccentButton"
-                 src="{{asset('equation-editor-master/src/MenuImages/png/dotAccent.png')}}">
-            <img class="menuItem" id="hatAccentButton"
-                 src="{{asset('equation-editor-master/src/MenuImages/png/hatAccent.png')}}">
-            <img class="menuItem" id="vectorAccentButton"
-                 src="{{asset('equation-editor-master/src/MenuImages/png/vectorAccent.png')}}">
-            <img class="menuItem" id="barAccentButton"
-                 src="{{asset('equation-editor-master/src/MenuImages/png/barAccent.png')}}">
-            <div style="display: inline-block">rows: <input type="text" id="rows"/><br> cols: <input type="text"
-                                                                                                     id="cols"/></div>
-            <div class="menuItem" id="matrixButton" style="font-size: 35px; padding: 5px 5px; display: inline-block">
-                Matrix
-            </div>
-        </div>
     </div>
 </div>
 JSON:
 <div id="ContentJSON" style="margin: 20px; border: solid 1px #000">&nbsp;</div>
+
+<button id="toLatex">Odpovedať</button>
+
 LaTeX:
 <div id="ContentLatex" style="margin: 20px; border: solid 1px #000">&nbsp;</div>
+
+
+
 
 <script>
     $('#toJSON').on('click', function () {
@@ -923,7 +672,22 @@ LaTeX:
     });
     $('#toLatex').on('click', function () {
         var jsonObj = $('.eqEdEquation').data('eqObject').buildJsonObj();
-        $('#ContentLatex').html(generateLatex(jsonObj));
+        //$('#ContentLatex').html(generateLatex(jsonObj));
+        var studentResult = generateLatex(jsonObj);
+        var correctResult = '{{$correctAnswer}}'
+
+        // todo: poslat studentResult do db
+        console.log(studentResult)
+        console.log(correctResult)
+        if (studentResult === correctResult){
+            // spravna
+            console.log("SPRAVNE")
+        }else {
+            // nespravne
+            console.log("NESPRAVNE")
+        }
+        // redirect na hlavnu studentovu - studentstats
+
     });
 </script>
 <textarea id="TextJSON"></textarea>

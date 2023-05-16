@@ -482,7 +482,7 @@ var squareRootToLatex = function(expr) {
 }
 
 var stackedFractionToLatex = function(expr) {
-	var latexString = '\\frac';
+	var latexString = 'dfrac';
 	var numerator = '{' + generateLatex(expr.operands.numerator) + '}';
 	var denominator = '{' + generateLatex(expr.operands.denominator) + '}';
 	latexString += numerator + denominator;
@@ -498,7 +498,7 @@ var subscriptToLatex = function(expr) {
 
 var superscriptToLatex = function(expr) {
 	var latexString = '';
-	var superscript = '^{' + generateLatex(expr.operands.superscript) + '}';
+	var superscript = '^' + generateLatex(expr.operands.superscript) + '';
 	latexString += superscript;
 	return latexString;
 }
