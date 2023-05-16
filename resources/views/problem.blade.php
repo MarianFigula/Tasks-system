@@ -445,13 +445,6 @@
     @endif
 </div>
 <hr>
-<form action="{{url('problem')}}" method="post">
-
-
-</form>
-
-
-<button id="toJSON">To JSON</button>
 
 <br/><br/>
 <input id="hiddenFocusInput" style="width: 0; height: 0; opacity: 0; position: absolute; top: 0; left: 0;" type="text"
@@ -653,57 +646,20 @@
         </div>
     </div>
 </div>
-JSON:
-<div id="ContentJSON" style="margin: 20px; border: solid 1px #000">&nbsp;</div>
 
-<button id="toLatex">Odpovedať</button>
-
-LaTeX:
-<div id="ContentLatex" style="margin: 20px; border: solid 1px #000">&nbsp;</div>
-
-
-
+<button id="toLatex" class="btn btn-success" type="submit">Odpovedať</button>
 
 <script>
-    $('#toJSON').on('click', function () {
-        var jsonObj = $('.eqEdEquation').data('eqObject').buildJsonObj();
-        console.log(jsonObj);
-        $('#ContentJSON').html(JSON.stringify(jsonObj));
-    });
     $('#toLatex').on('click', function () {
         var jsonObj = $('.eqEdEquation').data('eqObject').buildJsonObj();
-        //$('#ContentLatex').html(generateLatex(jsonObj));
+
+        $('#hid-answer').value = generateLatex(jsonObj)
+
         var studentResult = generateLatex(jsonObj);
-        var correctResult = '{{$correctAnswer}}'
-
-        // todo: poslat studentResult do db
-        console.log(studentResult)
-        console.log(correctResult)
-        if (studentResult === correctResult){
-            // spravna
-            console.log("SPRAVNE")
-        }else {
-            // nespravne
-            console.log("NESPRAVNE")
-        }
-        // redirect na hlavnu studentovu - studentstats
-
+        var correctResult = '{{$correctAnswer}}';
+        window.location.href = 'problem/' + studentResult + "/" + correctResult;
     });
 </script>
-<textarea id="TextJSON"></textarea>
-<br>
-<button id="JSONtoEqEd">Render Equation</button>
-<script>
-    $('#JSONtoEqEd').on('click', function (e) {
-        var jsonObj = $.parseJSON($('#TextJSON').val());
-        var equation = eqEd.Equation.constructFromJsonObj(jsonObj);
-        $('#renderedEq').empty();
-        $('#renderedEq').append(equation.domObj.value);
-        equation.updateAll();
-    });
-</script>
-<div id="renderedEq"></div>
-
 
 </body>
 </html>

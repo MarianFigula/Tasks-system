@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use \Illuminate\Support\Str;
@@ -11,6 +12,7 @@ use App\Http\Controllers\OctaveController;
 
 class ProblemController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -36,6 +38,7 @@ class ProblemController extends Controller
 
     function fetchData()
     {
+
         $student_id = session('student_id');
         $file_id = session('file_id');
         $path = session('path');
@@ -47,7 +50,8 @@ class ProblemController extends Controller
         $data = $this->parseLatexData($latexLines, $task_num);
         //var_dump($data);
 
-        return view('problem', ['latexLines' => $latexLines, 'src' => $data[0], 'correctAnswer' => $data[1], 'task' => $data[2]]);
+        return view('problem', ['latexLines' => $latexLines, 'src' => $data[0], 'correctAnswer' => $data[1], 'task' => $data[2],
+            'student_id' => $student_id, 'file_id' =>$file_id]);
     }
 
     function updateTaskNumberInDatabase($task_num, $file_id, $student_id)
@@ -57,9 +61,32 @@ class ProblemController extends Controller
     }
 
     // TODO FIX
-    function updateAnswerInDatabase($correctAnswer, $file_id, $student_id)
+    static function updateAnswerInDatabase($studentAnswer, $correctAnswer)
     {
-        //DB::update("update student_task as st SET st.task_num=".$task_num.'where st.file_id='.$file_id.' and st.student_id='.$student_id);
+
+        $student_id = session('student_id');
+        $file_id = session('file_id');
+
+        //var_dump($studentAnswer);
+
+        if ($correctAnswer === $studentAnswer){
+            $isCorrect = true;
+        }else{
+            $isCorrect = false;
+        }
+        var_dump($file_id);
+        var_dump($student_id);
+        var_dump($correctAnswer);
+
+        DB::table('student_tasks')
+            ->where(['student_id'=>$student_id,'file_id'=> $file_id])// Replace 'my_table' with your table name and '$id' with the ID of the row you want to update
+            ->update([
+                'task_correct' => $isCorrect,  // Replace 'column1' with the name of the column you want to update and 'New Value 1' with the new value
+                'student_answer' => $studentAnswer,  // Replace 'column2' with the name of the column you want to update and 'New Value 2' with the new value
+                // Add more columns here as needed
+            ]);
+
+        return redirect()->route('studentstats');
     }
 
     function getTaskNumber($latexLines): string
@@ -111,6 +138,8 @@ class ProblemController extends Controller
 
     function parseLatexData($latexLines, $task_num)
     {
+        global $correctAnswer;
+
         $taskFound = false;
         $solutionFound = false;
         $solutionEquationFound = false;

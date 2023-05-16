@@ -25,10 +25,10 @@ Route::get('/', function () {
 
 
 Route::get('/teacherTutorial', [App\Http\Controllers\TeacherPdfController::class, 'index'])->middleware(CheckRoleTeacher::class);
-Route::get('/teacher-pdf', [App\Http\Controllers\TeacherPdfController::class, 'generatePdf'])->name('teacher-pdf');
+Route::get('/teacher-pdf', [App\Http\Controllers\TeacherPdfController::class, 'generatePdf'])->middleware(CheckRoleTeacher::class)->name('teacher-pdf');
 
 Route::get('/studentTutorial',[App\Http\Controllers\StudentPdfController::class, 'index'])->middleware(CheckRoleStudent::class);
-Route::get('/student-pdf', [App\Http\Controllers\StudentPdfController::class, 'generatePdf'])->name('student-pdf');
+Route::get('/student-pdf', [App\Http\Controllers\StudentPdfController::class, 'generatePdf'])->middleware(CheckRoleStudent::class)->name('student-pdf');
 
 Auth::routes();
 
@@ -45,8 +45,10 @@ Route::post('/assigntasks', [App\Http\Controllers\AssignTasksController::class, 
 //Route::post('/assigntasks', [App\Http\Controllers\AssignTasksController::class, 'insert']);
 Route::get('/editfiles/{fileid}/{studentid}', [App\Http\Controllers\EditFilesController::class, 'getId'])->middleware(CheckRoleTeacher::class)->name('editfiles1');
 Route::post('/editfiles', [App\Http\Controllers\EditFilesController::class, 'edit'])->name('editfiles2');
-Route::get('/files', [\App\Http\Controllers\FileController::class, 'displayFiles'])->name("displayfiles");
+Route::get('/files', [\App\Http\Controllers\FileController::class, 'displayFiles'])->middleware(CheckRoleTeacher::class)->name("displayfiles");
 Route::post('/problem', [App\Http\Controllers\ProblemController::class, 'solve'])->middleware(CheckRoleStudent::class)->name('editfiles1');
+
+Route::get('/problem/{studentAnswer}/{correctAnswer}', [\App\Http\Controllers\ProblemController::class, 'updateAnswerInDatabase'])->middleware(CheckRoleStudent::class)->name("updateAnswer");
 
 Route::get('/editor', function (){
     return view('editor');
