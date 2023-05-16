@@ -14,8 +14,16 @@
 
 @section('content')
     <div class="katex">
+        {{var_dump($resultArray)}}
+        <br>
+        {{var_dump($resultArray[0])}}
+        {{--
+        @foreach($resultArray as $item)
+            {{'\[' . $item . ']/'}}
+        @endforeach }}
+
     {{-- TODO ULOZIT CISLO DO DB, COUNTER PRE POCET ULOH, RNG, --}}
-        <h5>{{$equation}}</h5>
+
         <img src="{{asset($src)}}" alt="image" style="margin-left: auto;margin-right: auto;width: 50%;display: block">
     </div>
     <hr>

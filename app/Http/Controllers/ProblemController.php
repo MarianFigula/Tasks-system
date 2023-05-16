@@ -40,9 +40,8 @@ class ProblemController extends Controller
 
         $this->updateTaskNumberInDatabase($task_num, $file_id, $student_id);
         $data = $this->parseLatexData($latexLines, $task_num);
-        //var_dump($data);
 
-        return view('problem', ['latexLines' => $latexLines, 'equation' => $data[0], 'src' => $data[1], 'correctAnswer' => $data[2]]);
+        return view('problem', ['latexLines' => $latexLines, 'resultArray' => $data[0], 'src' => $data[1], 'correctAnswer' => $data[2]]);
     }
 
     function updateTaskNumberInDatabase($task_num, $file_id, $student_id)
@@ -78,7 +77,7 @@ class ProblemController extends Controller
     function getLinesFromFile($path): array
     {
         // TODO: tu bude path
-        $filePath = public_path('../priklady/blokovka01pr.tex');
+        $filePath = public_path('../priklady/odozva01pr.tex');
 
         try {
             $latexContent = File::get($filePath);
@@ -105,7 +104,7 @@ class ProblemController extends Controller
 
     function parseLatexData($latexLines, $task_num){
         $taskFound = false;
-        $equation = "";
+        $resultArray = array();
         $src = "";
         $correctAnswer = "";
         foreach ($latexLines as $line){
@@ -113,24 +112,48 @@ class ProblemController extends Controller
                 $taskFound = true;
             }
             if ($taskFound){
-                if (Str::contains($line, '$')){
-                    $equation = $this->regexEquation($line);
-                    //var_dump("SOM TU $");
-                    continue;
-                }
-                if (Str::contains($line, "\includegraphics")){
+                $line = trim($line);
+                if (strpos(trim($line), "\\") !== false && strpos(trim($line), "\\") == 0) {
+                    $firstLetter = substr($line, 0, 1);
+                    var_dump($firstLetter);
+                    var_dump("je 0");
+                }if (strpos(trim($line), "\\") != 0) {
+                    var_dump("neni 0");
+                }if (strpos(trim($line), "\\") == false){
+                    $firstLetter = substr($line, 0, 1);
+                    var_dump($firstLetter);
 
+                }
+
+
+                if (Str::contains($line, "\includegraphics")) {
                     $src = $this->getStringInCurlyBraces($line);
                     continue;
+                } elseif (strpos(trim($line), "\\") == 0 || strpos(trim($line), "\\") == 1){
+
                 }
+                if (Str::contains($line, 'F(s)')){
+                    if (Str::contains($line, '$')){
+                        $resultArray = explode('$', $line);
+                        //print_r($resultArray); // cely riadok - vid blokovka01/02
+                        continue;
+                    }
+                    //$pos = strpos($line, "F(s)");
+                    //$string = substr_replace($line, '\[', $pos-1, 0);
+
+                    //$string = substr_replace($line, '\[', $pos-1, 0);
+                }
+                // ziskanie spravnej odpovede
                 if (Str::contains($line, '\dfrac{')){
                     //$this->updateAnswerInDatabase($line, $file_id,$student_id);
                     $correctAnswer = $this->getStringInCurlyBraces($line);
                     $taskFound = false;
                 }
+
             }
+
         }
-        return [$equation, $src, $correctAnswer];
+        return [$resultArray, $src, $correctAnswer];
 
     }
 
