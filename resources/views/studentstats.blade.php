@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <div class=" table-responsive col-xl-6">
     <div class="text-center">
         <h3><b>Štatistiky študentov</b></h3>
@@ -36,6 +38,8 @@
                             @else
                                 <td>0</td>
                             @endif
+                        @else
+                            <td>0</td>
                         @endif
                     @endfor
                 @else
