@@ -16,7 +16,7 @@
                 <th>Body</th>
                 <th>Obmedzenie</th>
                 <th>Pridaj</th>
-                <th>Uprav</th>
+
             </tr>
             </thead>
             <tbody>
@@ -25,7 +25,11 @@
                     <td>{{$item->id}}</td>
                     <td>{{$item->path}}</td>
                     <td>{{$item->points}}</td>
-                    <td>{{$item->date}}</td>
+                    @if($item->date)
+                        <td>{{$item->date}}</td>
+                    @else
+                        <td>Neobmedzené</td>
+                    @endif
 
                     @if(in_array($item,$studentfilesquery))
                         <td>Už priradené</td>
@@ -41,8 +45,7 @@
 
                     @endif
 
-                    <td><a href="{{ url('editfiles/' . $item->id . '/' . $id) }}"
-                           class="btn btn-xs btn-success pull-right">Uprav</a></td>
+
                 </tr>
             @endforeach
             </tbody>

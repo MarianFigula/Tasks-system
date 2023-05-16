@@ -25,7 +25,11 @@
                     <td>{{$item->id}}</td>
                     <td>{{$item->path}}</td>
                     <td>{{$item->points}}</td>
-                    <td>{{$item->date}}</td>
+                    @if($item->date)
+                        <td>{{$item->date}}</td>
+                    @else
+                        <td>Neobmedzené</td>
+                    @endif
                     @if($item->task_correct)
                         <td>Správne</td>
                     @elseif(!$item->task_correct && !$item->task_gen)
@@ -33,7 +37,9 @@
                     @else
                         <td>Nesprávne</td>
                     @endif
-                    @if(!$item->task_gen)
+                    @if($item->date!=null && $item->date < date("Y-m-d") && !$item->task_gen)
+                        <td>Po termíne</td>
+                    @elseif(!$item->task_gen)
                     <td> <form action="{{url('studentfiles')}}" method="post">
                             <input type="hidden" name="file_id" value="{{$item->id}}">
                             <input type="hidden" name="student_id" value="{{$student_id}}">

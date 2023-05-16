@@ -26,7 +26,7 @@
                 <td>{{$item->path}}</td>
                 <td>{{$item->task_num}}</td>
                 @if($item->student_answer)
-                    <td>Odovzdané</td>
+                    <td>{{$item->student_answer}}</td>
                 @else
                     <td>Neodovzdané</td>
                 @endif

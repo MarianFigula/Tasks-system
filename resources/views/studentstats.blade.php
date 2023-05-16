@@ -14,7 +14,7 @@
             <th>ID</th>
             <th>Meno</th>
             <th>Email</th>
-            <th>Počet generovaných úloh</th>
+            <th>Počet riešených úloh</th>
             <th>Počet získaných bodov</th>
             <th>Detail</th>
             <th>Priradiť úlohy</th>

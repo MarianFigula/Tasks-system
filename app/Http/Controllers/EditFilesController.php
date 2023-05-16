@@ -35,7 +35,7 @@ class EditFilesController extends Controller
                 // Add more columns here as needed
             ]);
 
-        return redirect('assigntasks/'.$request->studentid);
+        return redirect('files');
     }
 
 }
