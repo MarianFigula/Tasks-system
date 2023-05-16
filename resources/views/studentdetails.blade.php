@@ -37,7 +37,12 @@
                 @else
                     <td>Nesprávne</td>
                 @endif
-                <td>{{$item->points}}</td>
+                @if($item->task_correct)
+                    <td>{{$item->points}}/{{$item->points}}</td>
+                @else
+                    <td>0/{{$item->points}}</td>
+                @endif
+
             </tr>
         @endforeach
         </tbody>
