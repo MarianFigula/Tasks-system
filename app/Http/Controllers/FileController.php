@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use DirectoryIterator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+
 
 class FileController extends Controller
 {
@@ -13,19 +17,19 @@ class FileController extends Controller
     }
 
     public function displayFiles(){
-        $files = Storage::files('../priklady');
-        foreach ($files as $file) {
-            $fileName = pathinfo($file, PATHINFO_FILENAME);
-            // insert
-            echo $fileName . "\n";
+        $dir_path = public_path() . '/priklady';
+        $dir = new DirectoryIterator($dir_path);
+        foreach ($dir as $file) {
+            if ($file->isFile()) {
+                $fileName = $file->getFilename();
+                $query = DB::select("select * from files f where f.path LIKE $fileName");
+                if (!$query){
+                    // insert
+                    DB::insert("insert into files f ");
+                }
+            }
         }
-    }
-
-    public function getAllFiles(){
-        $files = Storage::files('../priklady');
-        foreach ($files as $file) {
-            $fileName = pathinfo($file, PATHINFO_FILENAME);
-            echo $fileName . "\n";
-        }
+        $query = DB::select("select * from files f");
+        return view('files')->with($query);
     }
 }
