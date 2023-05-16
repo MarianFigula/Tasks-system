@@ -46,17 +46,17 @@
                             </div>
                         </div>
                         {{--TODO: oznacenie role ucitela alebo studenta, spravit styly--}}
-                        <div class="form-outline mb-1 text-center">
-                            <div class="form-check-inline">
-                            <input type="radio" name="role" value="teacher" class="gradient-custom-2" >
-                            <label class="form-check-label mt-2" for="flexRadioDefault1">
+                        <div class="form-outline text-center mt-3">
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" value="teacher" class="gradient-custom-2" >
+                            <label class="form-check-label" for="flexRadioDefault1">
                                 Teacher
                             </label>
                             </div>
 
-                            <div class="form-check-inline">
-                            <input type="radio" name="role"  checked value="student" class="gradient-custom-2" >
-                            <label class="form-check-label mt-2" for="flexRadioDefault2">
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role"  checked value="student" class="gradient-custom-2" >
+                            <label class="form-check-label " for="flexRadioDefault2">
                                 Student
                             </label>
 

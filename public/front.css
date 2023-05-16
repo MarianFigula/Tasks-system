@@ -13,6 +13,9 @@
     .card-body {
         height: 65vh !important;
     }
+    .card-body-register {
+        height: 80vh !important;
+    }
 }
 @media (min-width: 769px) {
     .gradient-custom-2 {
@@ -20,3 +23,5 @@
         border-bottom-right-radius: .3rem;
     }
 }
+
+
