@@ -22,14 +22,18 @@ class FileController extends Controller
         foreach ($dir as $file) {
             if ($file->isFile()) {
                 $fileName = $file->getFilename();
-                $query = DB::select("select * from files f where f.path LIKE $fileName");
+                $query = DB::select("select * from files f where f.path LIKE ". "'%" . $fileName . "%'");
                 if (!$query){
-                    // insert
-                    DB::insert("insert into files f ");
+
+                    DB::table('files')->insert([
+                        'path' => $fileName,
+                        'points' => 0,
+                    ]);
                 }
             }
         }
         $query = DB::select("select * from files f");
-        return view('files')->with($query);
+        $data = compact('query');
+        return view('files')->with($data);
     }
 }
