@@ -13,14 +13,17 @@
 
 
 @section('content')
+
     <div class="katex">
-        {{var_dump($resultArray)}}
-        <br>
-        {{var_dump($resultArray[0])}}
-        {{--
-        @foreach($resultArray as $item)
-            {{'\[' . $item . ']/'}}
-        @endforeach }}
+        \[F(s)=\dfrac{Y(s)}{W(s)}\]
+
+        @for($i = 0; $i < count($resultArray); $i++)
+            @if($i == 1)
+                <h5>{{'\[' . $resultArray[$i] . '\]'}}</h5>
+                @continue
+            @endif
+                <h5>{{$resultArray[$i]}}</h5>
+        @endfor
 
     {{-- TODO ULOZIT CISLO DO DB, COUNTER PRE POCET ULOH, RNG, --}}
 

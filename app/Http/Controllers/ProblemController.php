@@ -77,7 +77,7 @@ class ProblemController extends Controller
     function getLinesFromFile($path): array
     {
         // TODO: tu bude path
-        $filePath = public_path('../priklady/odozva01pr.tex');
+        $filePath = public_path('../priklady/blokovka02pr.tex');
 
         try {
             $latexContent = File::get($filePath);
@@ -112,37 +112,37 @@ class ProblemController extends Controller
                 $taskFound = true;
             }
             if ($taskFound){
-                $line = trim($line);
-                if (strpos(trim($line), "\\") !== false && strpos(trim($line), "\\") == 0) {
-                    $firstLetter = substr($line, 0, 1);
-                    var_dump($firstLetter);
-                    var_dump("je 0");
-                }if (strpos(trim($line), "\\") != 0) {
-                    var_dump("neni 0");
-                }if (strpos(trim($line), "\\") == false){
-                    $firstLetter = substr($line, 0, 1);
-                    var_dump($firstLetter);
+
+                if (Str::contains($line, 'F(s)') ){
+                    // toto je len pre blokovka01
+                    if (Str::contains($line, '$')){
+                        $resultArray = explode('$', $line);
+                        print_r($resultArray); // cely riadok - vid blokovka01/02
+                        continue;
+                    }
+                }
+
+                if (strpos(trim($line), "\\") === strlen($line) ||
+                    strpos(trim($line), "\\") === strlen($line)-1){
+
+                    //$resultArray[] = $line;
+
+                }if (strpos(trim($line), "\\") === 1) {
 
                 }
+                //if (strpos(trim($line), "\\") === false){
+                //    $resultArray[] = $line;
+                //}
 
 
                 if (Str::contains($line, "\includegraphics")) {
                     $src = $this->getStringInCurlyBraces($line);
                     continue;
-                } elseif (strpos(trim($line), "\\") == 0 || strpos(trim($line), "\\") == 1){
-
                 }
-                if (Str::contains($line, 'F(s)')){
-                    if (Str::contains($line, '$')){
-                        $resultArray = explode('$', $line);
-                        //print_r($resultArray); // cely riadok - vid blokovka01/02
-                        continue;
-                    }
-                    //$pos = strpos($line, "F(s)");
-                    //$string = substr_replace($line, '\[', $pos-1, 0);
-
-                    //$string = substr_replace($line, '\[', $pos-1, 0);
+                if (Str::contains($line, 'y(')){
+                    $line = $this->regexEquation($line);
                 }
+
                 // ziskanie spravnej odpovede
                 if (Str::contains($line, '\dfrac{')){
                     //$this->updateAnswerInDatabase($line, $file_id,$student_id);
