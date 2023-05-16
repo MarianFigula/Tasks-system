@@ -24,7 +24,6 @@ class CheckRoleTeacher
             return redirect()->route("studentfiles");
         }
 
-        echo "ide next request";
         return $next($request);
     }
 

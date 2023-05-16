@@ -23,7 +23,7 @@ class CheckRoleStudent
             return redirect()->route("studentstats");
         }
 
-        echo "ide next request";
+
         return $next($request);
     }
 }
