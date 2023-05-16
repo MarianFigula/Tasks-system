@@ -82,7 +82,7 @@ class ProblemController extends Controller
     function getLinesFromFile($path): array
     {
         // TODO: tu bude path
-        $filePath = public_path('../priklady/odozva02pr.tex');
+        $filePath = public_path('\\priklady\\odozva02pr.tex');
 
         try {
             $latexContent = File::get($filePath);
