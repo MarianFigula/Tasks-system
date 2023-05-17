@@ -111,7 +111,7 @@ class ProblemController extends Controller
     {
 
         // TODO: tu bude path
-        $filePath = public_path('\\priklady\\'.$path[0]->path);
+        $filePath = public_path('priklady/'.$path[0]->path);
 
         try {
             $latexContent = File::get($filePath);

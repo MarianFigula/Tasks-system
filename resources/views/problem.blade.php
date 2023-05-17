@@ -68,7 +68,7 @@
     <script src="{{asset('equation-editor-master/src/lib/underscore-1.6.0.js')}}"></script>
     <script src="{{asset('equation-editor-master/src/lib/mousetrap-1.4.6.js')}}"></script>
     <script src="{{asset('equation-editor-master/src/lib/spin.min.js')}}"></script>
-    <script src="{{asset('http://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js')}}"></script>
+    <script src="{{asset('https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js')}}"></script>
     <script src="{{asset('equation-editor-master/src/app/js/property.js')}}"></script>
     <script src="{{asset('equation-editor-master/src/app/js/init.js')}}"></script>
     <script src="{{asset('equation-editor-master/src/app/js/fontMetrics.js')}}"></script>

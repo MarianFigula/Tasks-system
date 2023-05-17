@@ -27,7 +27,11 @@
                 <tr>
                     <td>{{$item->id}}</td>
                     <td>{{$item->path}}</td>
-                    <td>{{$item->points}}</td>
+                    @if($item->task_correct)
+                        <td>{{$item->points}}/{{$item->points}}</td>
+                    @else
+                        <td>0/{{$item->points}}</td>
+                    @endif
                     @if($item->date)
                         <td>{{$item->date}}</td>
                     @else
