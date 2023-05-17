@@ -3,6 +3,9 @@
 
 @section('content')
 
+    <head>
+        <link href="{{ asset('front.css') }}" rel="stylesheet">
+    </head>
     <div class="width-50 p-5">
         <div class="border p-4 bg-light">
             <h2 class="justify-content-center center-text">Úprava súboru</h2>
@@ -20,7 +23,7 @@
                     <input type="hidden" name="studentid" value="{{$studentid}}">
                     <input type="hidden" name="fileid" value="{{$fileid}}">
                 </div>
-                <button type="submit" class="btn btn-success">Uprav</button>
+                <button type="submit" class="btn btn-block text-white fa-lg gradient-custom-2">Uprav</button>
             </form>
             <!-- to iste len nad vsetkymi olympijskymi hramy - games to bude -
             ten isty form najprv to bude skryta a potom ked posle prvy tak sa objavi dalsi formular -->

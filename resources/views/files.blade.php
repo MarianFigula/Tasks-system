@@ -3,7 +3,10 @@
 
 @section('content')
 
-    <div class=" table-responsive col-xl-6">
+    <head>
+        <link href="{{ asset('front.css') }}" rel="stylesheet">
+    </head>
+    <div class=" table-responsive col-xl-6 mx-auto">
         <div class="text-center">
             <h3><b>Prehľad súborov s úlohami</b></h3>
         </div>
@@ -32,7 +35,7 @@
 
 
                     <td><a href="{{ url('editfiles/' . $item->id . '/' . $item->id/*totoiune*/) }}"
-                           class="btn btn-xs btn-success pull-right">Uprav</a></td>
+                           class="btn btn-block text-white fa-lg gradient-custom-2 pull-right">Uprav</a></td>
                 </tr>
             @endforeach
             </tbody>

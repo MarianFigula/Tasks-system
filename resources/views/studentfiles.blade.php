@@ -3,7 +3,10 @@
 
 @section('content')
 
-    <div class=" table-responsive col-xl-6">
+    <head>
+        <link href="{{ asset('front.css') }}" rel="stylesheet">
+    </head>
+    <div class=" table-responsive col-xl-6 mx-auto">
         <div class="text-center">
             <h3><b>Priradené úlohy</b></h3>
         </div>

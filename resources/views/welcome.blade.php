@@ -2,15 +2,27 @@
 
 
 @section('content')
+    <head>
+        <link href="{{ asset('front.css') }}" rel="stylesheet">
+    </head>
+    <div class="page">
+        <div class="container-welcome">
+            <h1 class="name-welcome text-center"><strong>Webový portál</strong></h1>
 
-    <h1>Webový portál</h1>
-
-    <div>
-        <h4>Marián Figula</h4>
-        <h4>Marián Kňazovický</h4>
-        <h4>Andrej Belko</h4>
-        <h4>Katarína Durčáková</h4>
+            <div class="name-welcome-1 col d-flex justify-content-center">
+                <h6>Vitajte na našom webovom portály, autori tohoto portálu sú:</h6>
+            </div>
+            <div class="col d-flex justify-content-center mt-4">
+                <h4 class="d-inline content-welcome mx-4">Marián Figula</h4>
+                <h4 class="d-inline content-welcome mx-4">Marián Kňazovický</h4>
+                <h4 class="d-inline content-welcome mx-4">Andrej Belko</h4>
+                <h4 class="d-inline content-welcome mx-4">Katarína Durčáková</h4>
+            </div>
+        </div>
     </div>
+
+
+
 
 
 

@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <div class=" table-responsive col-xl-6">
+    <head>
+        <link href="{{ asset('front.css') }}" rel="stylesheet">
+    </head>
+    <div class=" table-responsive col-xl-6 mx-auto">
         <div class="text-center">
             <h3><b>Štatistiky študentov</b></h3>
         </div>
@@ -47,7 +49,7 @@
                     @endif
                     <td><a href="{{ url('/studentdetails/' . $x[$i]->id) }}" class="btn btn-xs btn-info pull-right">Detail</a>
                     </td>
-                    <td><a href="{{ url('/assigntasks/' . $x[$i]->id) }}" class="btn btn-xs btn-success pull-right">Priraď</a>
+                    <td><a href="{{ url('/assigntasks/' . $x[$i]->id) }}" class="btn btn-block text-white fa-lg gradient-custom-2 pull-right">Priraď</a>
                     </td>
                 </tr>
             @endfor
