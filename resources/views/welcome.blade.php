@@ -7,7 +7,7 @@
     </head>
     <div class="page">
         <div class="container-welcome">
-            <h1 class="name-welcome text-center"><strong>Webový portál</strong></h1>
+            <h1 class="name-welcome text-center "><strong>Webový portál</strong></h1>
 
             <div class="name-welcome-1 col d-flex justify-content-center">
                 <h6>Vitajte na našom webovom portály, autori tohoto portálu sú:</h6>

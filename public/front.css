@@ -29,10 +29,30 @@
 .name-welcome{
     font-size: 5rem;
     margin-top: 5rem;
+    background: linear-gradient(#ee7724, #d8363a, #dd3675, #b44593);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
 }
 .name-welcome-1{
     margin-top: 2rem;
     margin-bottom: 11rem;
+
 }
 
+
+.number{
+    font-size: 1.9rem;
+    background: linear-gradient(to right, #ee7724, #b44593);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.download{
+    font-size: 1.1rem;
+    display: inline-block;
+    line-height: 2rem;
+    width: 9rem;
+}
+.description{
+    font-size: 1.1rem;
+}

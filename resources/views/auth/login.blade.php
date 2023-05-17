@@ -16,13 +16,13 @@
                         @csrf
 
                         <div class="text-center">
-                            <h3 class="mt-1 mb-5 pb-1 font-weight-bold "><strong>Login</strong></h3>
+                            <h3 class="mt-1 mb-5 pb-1 font-weight-bold "><strong>Prihlásiť sa</strong></h3>
                         </div>
                         <div class="form-outline mb-4">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-0 col-form-label text-md-end">{{ __('Email ') }}</label>
 
                             <div class="form-outline mb-4">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Enter your email address">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Vaša emailová adresa">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="form-outline mb-4">
-                            <label for="password" class="col-md-3 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-0 col-form-label text-md-end">{{ __('Heslo') }}</label>
 
                             <div class="form-outline mb-4">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="********">
@@ -63,7 +63,7 @@
                         <div class="row mb-0">
                             <div class="text-center pt-1 mb-5 pb-1">
                                 <button type="submit" class="btn btn-block text-white fa-lg gradient-custom-2 mb-3 w-50">
-                                    {{ __('Login') }}
+                                    {{ __('Prihlásiť sa') }}
                                 </button>
 
                                  {{--@if (Route::has('password.request'))
@@ -80,8 +80,8 @@
                     <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                         <div class="text-white px-5 py-4 pb-2 p-md-5 mx-md-4">
                             <div class="text-center">
-                            <h1 class="mb-4 font-weight-bold"><strong>Welcome Back!</strong></h1>
-                            <p class="small mb-0">To keep connected with us please login with your personal info.</p>
+                            <h1 class="mb-4 font-weight-bold"><strong>Vitajte späť !</strong></h1>
+                            <p class="small mb-0">Ak chcete zostať v spojení s nami, prihláste sa pomocou svojich osobných údajov.</p>
                         </div>
                         </div>
                     </div>

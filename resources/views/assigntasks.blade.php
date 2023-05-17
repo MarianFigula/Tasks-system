@@ -3,7 +3,11 @@
 
 @section('content')
 
-    <div class=" table-responsive col-xl-6">
+    <head>
+        <link href="{{ asset('front.css') }}" rel="stylesheet">
+    </head>
+
+    <div class=" table-responsive col-xl-6 mx-auto">
         <div class="text-center">
             <h3><b>Pridarenie úlohy študentovi {{$studentquery[0]->name}}</b></h3>
         </div>
@@ -39,7 +43,7 @@
                             <form action="{{url('assigntasks')}}" method="post">
                                 <input type="hidden" name="file_id" value="{{$item->id}}">
                                 <input type="hidden" name="student_id" value="{{$id}}">
-                                <button type="submit" class="btn btn-success">Pridaj</button>
+                                <button type="submit" class="btn btn-block text-white fa-lg gradient-custom-2">Pridaj</button>
                             </form>
                         </td>
 

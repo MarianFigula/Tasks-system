@@ -47,7 +47,7 @@
                         <td>0</td>
                         <td>0</td>
                     @endif
-                    <td><a href="{{ url('/studentdetails/' . $x[$i]->id) }}" class="btn btn-xs btn-info pull-right">Detail</a>
+                    <td><a href="{{ url('/studentdetails/' . $x[$i]->id) }}" class="btn btn-xs btn-warning pull-right">Detail</a>
                     </td>
                     <td><a href="{{ url('/assigntasks/' . $x[$i]->id) }}" class="btn btn-block text-white fa-lg gradient-custom-2 pull-right">Priraď</a>
                     </td>

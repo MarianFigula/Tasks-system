@@ -46,7 +46,7 @@
                     <td> <form action="{{url('studentfiles')}}" method="post">
                             <input type="hidden" name="file_id" value="{{$item->id}}">
                             <input type="hidden" name="student_id" value="{{$student_id}}">
-                            <button type="submit" class="btn btn-success">Riešiť</button></form></td>
+                            <button type="submit" class="btn btn-block text-white fa-lg gradient-custom-2">Riešiť</button></form></td>
                     @else
                         <td>Odovzdané</td>
                     @endif
